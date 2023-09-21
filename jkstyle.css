@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+/* Basic Style for Unverisally */
+*{
+    box-sizing: border-box;
+}
+/*GLOBAL: BODY*/   
+body{
+    font-family: 'Montserrat';
+    color: var(--color-1);
+    background-color: var(--color-2);
+}
+
+
+/*Light Theme Color*/
+body[data-theme='light']{
+    --color-1: rgba(2, 36, 41, 0.932); 
+    --color-2: rgba(253, 252, 252, 0.979);
+    --color-3: rgba(238, 48, 23, 0.979);
+    --color-4: rgba(29, 14, 241, 0.979);
+    --color-5: rgba(35, 243, 8, 0.979);
+}
+
+/*Dark Theme Color*/
+body[data-theme='dark']{
+    --color-1: rgba(247, 245, 243, 0.979); 
+    --color-2: rgba(10, 10, 10, 0.979);
+    --color-3: rgba(238, 48, 23, 0.979);
+    --color-4: rgba(29, 14, 241, 0.979);
+    --color-5: rgba(35, 243, 8, 0.979);
+}
+
+/*Theme Switcher style properties*/
+.theme_switcher{
+    position: fixed;
+    right: 20px;
+    bottom: 10px;
+}
+/*Theme Switcher input checkbox style properties*/
+.theme_switcher input{
+    width: 0;
+    height: 0;
+    visibility: hidden;
+}
+
+/*Theme Switcher input label style properties*/
+.switchlabel{
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    padding: 10%;
+    height: 30px;
+    width: 70px;
+    background-color: #111;
+    border-radius: 50px;
+    position: relative;
+    transition: .5s ease background-color;
+    justify-content: space-between;
+}
+
+/*Theme Switcher input label toggle ball style properties*/
+.toggleball {
+    height: 20px;
+    width: 20px;
+    position: absolute;
+}
+
+/*Theme Switcher input label sun style properties*/
+.switchlabel .fa-sun {
+    color: #f39c12;
+}
+
+/*Theme Switcher input label moon style properties*/
+.switchlabel .fa-moon {
+    color: #f1c40f;
+}
+
+/*Theme Switcher input label after style properties*/
+.switchlabel::after{
+    position: absolute;
+    content: '';
+    width: 20px;
+    height: 20px;
+    border-radius: 50px;
+    background-color: white;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+    transition: .5s ease all;
+}
+
+.theme_switcher input:checked + .switchlabel{
+    background-color: black;
+    border: 2px solid whitesmoke;
+}
+
+.theme_switcher input:checked + .switchlabel::after{
+    background-color: white;
+    left: calc(100% - 25px);
+}
+
+.topnav {
+    padding: 15px;
+    background-color: transparent;
+    margin: 5px;
+    border: 1px ;
+}
+
+.topnav a{
+    padding: 10px;
+    margin: 10px;
+    margin-left: 5px;
+}
