@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<style>
+		table.center {
+			/* margin-left: auto;
+			margin-right: auto; */
+			/* margin: 0 auto; */
+			text-indent: 0px ;
+			text-align: justify;
+			font-size: larger;
+			font:18px Arial,sans-serif;
+			font-weight: bold;
+			padding: 5px;
+			}
+		table.headings {
+			/* margin: 10px auto; */
+			font:16px Arial,sans-serif;
+			text-align: justify;
+			text-indent: 0px;
+			padding: 0px;
+			font-size:large;
+			}
+		table.content {
+			margin: 10px auto;
+			font:16px Arial,sans-serif;
+			text-align: justify;
+			text-indent: 30px;
+			padding: 5px;
+			}
+		table.tools {
+			/* margin-left: auto;
+			margin-right: auto; */
+			/* margin: 0 auto; */	
+			text-indent: 5px ;
+			font:14px Arial,sans-serif;
+			text-align: justify;			
+			padding: 15px;
+			/* border: 1px solid black; */
+			}
+		table.ul1 {
+			text-align:center; 
+			text-align:justify;
+			text-justify: inter-word;
+			text-indent: 40px;
+			padding: 5px;
+			}
+		</style>
+	</head>	
+	<title>Intel Ethernet - E700 Series Network Adapter - LAN Performance</title>
+	<body>
+		<!-- Project Details -->
+		<table class="center">
+			<tr>
+				<th>Project Name</th>
+				<th style="padding: 10px;">:</th>
+				<th>Intel Ethernet - E700 Series Network Adapter - LAN Performance</th>
+			</tr>
+			<tr>
+				<th>Project Duration</th>
+				<th style="padding: 10px;">:</th>
+				<th>OCT 2022 - Till Now</th>
+			</tr>
+			<tr>
+				<th>Job Designation</th>
+				<th style="padding: 10px;">:</th>
+				<th>Driver Validation Engineer</th>
+			</tr>
+			<tr>
+				<th>Organization</th>
+				<th style="padding: 10px;">:</th>
+				<th>Intel  - India</th>
+			</tr>
+		</table>
+
+		<!-- Project Description -->
+		<table class="headings">
+			<tr>
+				<th style="text-align:left">Project Description : </th>
+			</tr>
+		</table>
+		<table class="content">
+			<td>This project aimed to collect the LAN Throughput and Latency performance of Intel E700 Series Ethernet Network adapters in test environment and validating against defined KPI.</td>
+		</table>
+
+		<!-- Roles and Responsbilites -->
+		<table class="headings">
+			<tr>
+				<th style="text-align:left">Roles and Responsbilites :</th>
+			</tr>
+		</table>
+		<table class="content">
+			<ul class="ul1">
+				<li>Reseting BIOS configuration to default values and applying tunned BIOS configuration manually</li>
+				<li>Bringing up Test system: By installing OS (Linux RHEL or Windows Server 2019/2022 Data center)</li>
+				<li>Applying performance tunned configuration to Kernel, OS, network adapter and Traffic generator applications based on test requirement. </li>
+				<li>Executing LAN Throughput performance test by manullay or using automated scripts using iperf or Netperf traffic generator to collect following performance data sets with CPU utilization of the SUT test system: </li>
+				<ul>
+					<li>TCP Traffic Buffer Size = 32 to 65535<br></li>
+					<li>UDP Traffic Buffer Size = 32 to MAX MTU Size<br></li>
+					<li>Number of Traffic Threads = 1 to MAX Number of Test system CPU Cores<br></li>
+					<li>Number of Test ports in Ethernet Adapter = 1 to MAX number of PF ports supported in Network Adapter<br></li>
+					<li>Traffic Directions = UX (TX , RX) and BX</li>
+				</ul>
+				<li>Executing Latency Test by manuall or using automated scripts using netperf tool</li>
+				<li>Analyse collected results, prepare a report for it and share it to team and management</li>
+			</ul>
+		</table>
+
+		<!-- Technologies and Tools Used -->
+		<table class="headings">
+			<tr>
+				<th style="text-align:left">Technologies and Tools Used : </th>
+			</tr>
+		</table>
+		<table class="tools">
+			<tr>
+				<th>iPerf2</th>
+				<th style="padding: 10px;">:</th>
+				<td>used for collecting TCP and UDP LAN Throughput Performance Data</td>
+			</tr>
+			<tr>
+				<th>netperf</th>
+				<th style="padding: 10px;">:</th>
+				<td>used for collecting TCP / UDP LAN Throughput and Latency Performance Data</td>
+			</tr>
+			<tr>
+				<th>Bash Shell and python script</th>
+				<th style="padding: 10px;">:</th>
+				<td>
+					<p>used for collecting LAN Throughput Performance data on Linux (RHEL) OS </p>
+					<p>used parmiko, subprocess, os, openpyxl python modules to automate End to End Test</p>
+				</td>
+			</tr>
+			<tr>
+				<th>BAT and Powershell script</th>
+				<th style="padding: 10px;">:</th>
+				<td>used for collecting LAN Throughput Performance data on Windows Server OS</td>
+			</tr>
+		</table>
+
+		<!-- Challenges -->
+		<table class="headings">
+			<tr>
+				<th style="text-align:left">Challenges : </th>
+			</tr>
+		</table>
+		<table class="content">
+			<ul class="ul1">
+				<!-- <li>Manually executing LAN performance test and collecting result will take more time</li> -->
+				<li>Collecting One set of LAN performance test result by manually takes ~ 12 to 14 hours. If each traffic test executes for 30 seconds</li>
+			</ul>
+		</table>
+
+		<!-- Achievements -->
+		<table class="headings">
+			<tr>
+				<th style="text-align:left">Achievements : </th>
+			</tr>
+		</table>
+		<table class="content">
+			<ul class="ul1">
+				<li>Using Shell, BAT, powershell and Python Automated LAN performance test.</li>
+				<li>Reduced execution time to Half without manuall intervention using standalone automation script</li>
+				<li>Automated script will take care below things</li>
+				<ul>
+					<li>Appplying Performance Tunning configurations to Test systems and Test Network Adapters</li>
+					<li>Installing Traffic Generator Tools and other required depedencies packages, apps, libs </li>
+					<li>Collecting Test System information - OS details, Network Adapter details, Kernel details, hardware information and other basic informations</li>
+					<li>Testing connectivity between SUT to each client test system</li>
+					<li>If connectivity check passed, start execuing LAN performance test with multiple scalable parameters</li>
+					<li>Each test will collect Throughput data and CPU utilization data.</li>
+					<li>Collected data will redirect to Excel CSV file</li>
+				</ul>				
+			</ul>
+		</table>
+
+		<!-- Products Tested -->
+		<table class="headings">
+			<tr>
+				<th style="text-align:left">Products Tested : </th>
+			</tr>
+		</table>
+		<table class="content">
+			<ul class="ul1">
+				<li>Intel® Ethernet Converged Network Adapter XL710-QDA2</li>
+				<li>Intel® Ethernet Network Adapter XXV710-DA2</li>				
+				<li>Intel® Ethernet Network Adapter X710-T4L</li>
+			</ul>
+		</table>
+
+		<!-- Github Link -->
+		<table class="headings">
+			<tr>
+				<th style="text-align:left">Link to Portfolio or GitHubs : </th>
+			</tr>
+		</table>
+		<table class="content">
+			<ul class="ul1">
+				<li>Product Link Page</li>
+				<ul>
+					<li>
+						<a href="https://www.intel.com/content/www/us/en/products/details/ethernet/700-network-adapters.html">https://www.intel.com/content/www/us/en/products/details/ethernet/700-network-adapters.html </a>
+						
+					</li>
+				</ul>
+				<li>Automated Script Link</li>
+				<ul>
+					<li>
+						<a href="https://github.com/jebakumarn/Windows_PWSH">https://github.com/jebakumarn/Windows_PWSH</a>
+					</li>
+					<li>
+						<a href="https://github.com/jebakumarn/StandlonePerfTest">https://github.com/jebakumarn/StandlonePerfTest</a>
+					</li>
+				</ul>
+			</ul>
+		</table>
+	</body>
+</html>

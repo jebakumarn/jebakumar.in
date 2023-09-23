@@ -5161,7 +5161,7 @@ Created using IcoMoon - icomoon.io
 .gallery figure.cc-effect figcaption::after {
   position: absolute;
   content: '';
-  opacity: 0; }
+  opacity: 30; }
 
 .gallery figure.cc-effect figcaption::before {
   top: 10px;
@@ -5177,14 +5177,14 @@ Created using IcoMoon - icomoon.io
   bottom: 10px;
   left: 10px;
   transform: scale(0, 0);
-  transform-origin: 100% 0; }
+  transform-origin: 10% 0; }
 
 .gallery figure.cc-effect .h4 {
-  margin-top: 15%;
+  margin-top: 25%;
   transition: transform 0.35s;
-  font-size: 28px;
+  font-size: 24px;
   opacity: 0; }
-  @media (max-width: 480px) {
+  @media (max-width: 500px) {
     .gallery figure.cc-effect .h4 {
       font-size: 28px; font-weight:bold;} }
 
@@ -5204,7 +5204,7 @@ Created using IcoMoon - icomoon.io
 
 .gallery figure.cc-effect img,
 .gallery figure.cc-effect .h4 {
-  transform: scale(1.06, 1.06); }
+  transform: scale(1.0, 1.0); }
 
 .gallery figure.cc-effect img,
 .gallery figure.cc-effect figcaption::before,
@@ -5219,7 +5219,7 @@ Created using IcoMoon - icomoon.io
 .gallery figure.cc-effect:hover figcaption::before,
 .gallery figure.cc-effect:hover figcaption::after {
   opacity: 1;
-  transform: scale(1); }
+  transform: scale(10); }
 
 .gallery figure.cc-effect:hover figcaption:before {
   background: rgba(27, 23, 23, 0.5); }
@@ -5227,7 +5227,7 @@ Created using IcoMoon - icomoon.io
 .gallery figure.cc-effect:hover .h4,
 .gallery figure.cc-effect:hover p,
 .gallery figure.cc-effect:hover button {
-  opacity: 1;
+  opacity: 10;
   transform: translate3d(0, 0, 0);
   color: #fff; }
 
@@ -5235,7 +5235,7 @@ Created using IcoMoon - icomoon.io
 .gallery figure.cc-effect:hover .h4,
 .gallery figure.cc-effect:hover p,
 .gallery figure.cc-effect:hover img {
-  transition-delay: 0.15s; }
+  transition-delay: 1.15s; }
 
 /* Header */
 /* Navbar style*/
