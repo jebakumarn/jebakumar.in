@@ -50,7 +50,6 @@
 <title>Intel IPU - Table Driven Interface (TDI) - P4 </title>
 
 <body>
-
 	<table class="center">
 		<tr>
 			<th>Project Name</th>
@@ -80,7 +79,13 @@
 		</tr>
 	</table>
 	<table class="content">
-		<td>This project aimed to collect the LAN Throughput and Latency performance of Intel E700 Series Ethernet Network adapters in test environment and validating against defined KPI.</td>
+		<tr>
+			<ul class="ul1">
+				<li>
+					This project aimed to collect Flow rate performance of configuring tdi rules on Intel IPU Accelerater.
+				</li>
+			</ul>
+		</tr>
 	</table>
 
 	<!-- Roles and Responsbilites -->
@@ -92,18 +97,10 @@
 	<table class="content">
 		<ul class="ul1">
 			<li>Reseting BIOS configuration to default values and applying tunned BIOS configuration manually</li>
-			<li>Bringing up Test system: By installing OS (Linux RHEL or Windows Server 2019/2022 Data center)</li>
+			<li>Bringing up Test system: By installing OS (Linux RHEL or Fedora or Rocky linux)</li>
 			<li>Applying performance tunned configuration to Kernel, OS, network adapter and Traffic generator applications based on test requirement. </li>
-			<li>Executing LAN Throughput performance test by manullay or using automated scripts using iperf or Netperf traffic generator to collect following performance data sets with CPU utilization of the SUT test system: </li>
-			<ul>
-				<li>TCP Traffic Buffer Size = 32 to 65535<br></li>
-				<li>UDP Traffic Buffer Size = 32 to MAX MTU Size<br></li>
-				<li>Number of Traffic Threads = 1 to MAX Number of Test system CPU Cores<br></li>
-				<li>Number of Test ports in Ethernet Adapter = 1 to MAX number of PF ports supported in Network Adapter<br></li>
-				<li>Traffic Directions = UX (TX , RX) and BX</li>
-			</ul>
-			<li>Executing Latency Test by manuall or using automated scripts using netperf tool</li>
-			<li>Analyse collected results, prepare a report for it and share it to team and management</li>
+			<li>Create a script for creating, deleting Million of rules for Simple Exact Match, Large Exact Match and Flow Counter features</li>
+			<li>execute script on Intel IPU Accelerater and calculate the time taken for configuring the rules</li>
 		</ul>
 	</table>
 
@@ -115,45 +112,40 @@
 	</table>
 	<table class="tools">
 		<tr>
-			<th>iPerf2</th>
-			<th style="padding: 10px;">:</th>
-			<td>used for collecting TCP and UDP LAN Throughput Performance Data</td>
-		</tr>
-		<tr>
-			<th>netperf</th>
-			<th style="padding: 10px;">:</th>
-			<td>used for collecting TCP / UDP LAN Throughput and Latency Performance Data</td>
-		</tr>
-		<tr>
-			<th>Bash Shell and python script</th>
+			<th>Bash Shell script</th>
 			<th style="padding: 10px;">:</th>
 			<td>
-				<p>used for collecting LAN Throughput Performance data on Linux (RHEL) OS </p>
-				<p>used parmiko, subprocess, os, openpyxl python modules to automate End to End Test</p>
+				<p>used for Configuring and bringing up Test system </p>
 			</td>
 		</tr>
 		<tr>
-			<th>BAT and Powershell script</th>
+			<th>Scapy</th>
 			<th style="padding: 10px;">:</th>
-			<td>used for collecting LAN Throughput Performance data on Windows Server OS</td>
+			<td>used for testing the rules by traffic</td>
+		</tr>
+		<tr>
+			<th>Python</th>
+			<th style="padding: 10px;">:</th>
+			<td>
+				<p>used for creating Millions of tdi rules and execute it in bf_switchd console </p>
+			</td>
 		</tr>
 	</table>
 
 	<!-- Challenges -->
-	<table class="headings">
+	<!-- <table class="headings">
 		<tr>
 			<th style="text-align:left">Challenges : </th>
 		</tr>
 	</table>
 	<table class="content">
 		<ul class="ul1">
-			<!-- <li>Manually executing LAN performance test and collecting result will take more time</li> -->
 			<li>Collecting One set of LAN performance test result by manually takes ~ 12 to 14 hours. If each traffic test executes for 30 seconds</li>
 		</ul>
-	</table>
+	</table> -->
 
 	<!-- Achievements -->
-	<table class="headings">
+	<!-- <table class="headings">
 		<tr>
 			<th style="text-align:left">Achievements : </th>
 		</tr>
@@ -173,7 +165,7 @@
 				<li>Collected data will redirect to Excel CSV file</li>
 			</ul>				
 		</ul>
-	</table>
+	</table> -->
 
 	<!-- Products Tested -->
 	<table class="headings">
@@ -183,9 +175,7 @@
 	</table>
 	<table class="content">
 		<ul class="ul1">
-			<li>Intel® Ethernet Converged Network Adapter XL710-QDA2</li>
-			<li>Intel® Ethernet Network Adapter XXV710-DA2</li>				
-			<li>Intel® Ethernet Network Adapter X710-T4L</li>
+			<li>Intel® Infrastructure Processing Unit (Intel® IPU)</li>
 		</ul>
 	</table>
 
@@ -200,18 +190,16 @@
 			<li>Product Link Page</li>
 			<ul>
 				<li>
-					<a href="https://www.intel.com/content/www/us/en/products/details/ethernet/700-network-adapters.html">https://www.intel.com/content/www/us/en/products/details/ethernet/700-network-adapters.html </a>
+					<a href="https://www.intel.com/content/www/us/en/products/details/network-io/ipu.html">https://www.intel.com/content/www/us/en/products/details/network-io/ipu.html </a>
 					
 				</li>
 			</ul>
 			<li>Automated Script Link</li>
 			<ul>
-				<li>
-					<a href="https://github.com/jebakumarn/Windows_PWSH">https://github.com/jebakumarn/Windows_PWSH</a>
-				</li>
-				<li>
-					<a href="https://github.com/jebakumarn/StandlonePerfTest">https://github.com/jebakumarn/StandlonePerfTest</a>
-				</li>
+				<li>InProgress</li>
+				<!-- <li>
+					<a href="https://github.com/jebakumarn/NCNG_SW_VAL_Performance_IPU">https://github.com/jebakumarn/NCNG_SW_VAL_Performance_IPU</a>
+				</li> -->
 			</ul>
 		</ul>
 	</table>

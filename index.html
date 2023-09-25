@@ -170,10 +170,11 @@
 								<!--<li  style = "text-align: justify; text-justify: inter-word;">-->
 									I have flourishing 
 									<!-- Work Experience Age Calculator -->
-									<a id="workexp">
+									<a id="workexp1">									
 									<script>
 										//collect input from HTML form and convert into date format (mm/dd/yyyy)
-										var dob = new Date("07/11/2021");
+										// var dob = new Date("07/11/2021");
+										var dob = new Date("11/29/2021");
 										
 										//extract the year, month, and date from user date input
 										var dobYear = dob.getYear();
@@ -223,11 +224,45 @@
 										days: dateAge
 										};
 										  
-										var ageString = age.years  +6+ " years, " + age.months + " months, " + age.days + " days ";
+										var ageString = age.years  + " years, " + age.months + " months, " + age.days + " days ";
 
-										//display the calculated age
-										//document.write("  "+ageString);
-										document.getElementById("workexp").innerHTML = " " + ageString;				
+										// //display the calculated age
+										// //document.write("  "+ageString);
+										// document.getElementById("workexp1").innerHTML = " " + ageString;		
+										var age1 = { years: age.years, months: age.months, days: age.days };
+										var age2 = { years: 2, months: 7, days: 0 };
+										var age3 = { years: 1, months: 3, days: 9 };
+										var age4 = { years: 2, months: 1, days: 13 };
+									
+										// Function to add two age objects
+										function addAges(ageA, ageB) {
+											var result = {
+											years: ageA.years + ageB.years,
+											months: ageA.months + ageB.months,
+											days: ageA.days + ageB.days
+											};
+									
+											// Adjust months and years if days exceed 30
+											if (result.days >= 30) {
+											result.months += Math.floor(result.days / 30);
+											result.days %= 30;
+											}
+									
+											// Adjust months and years if months exceed 12
+											if (result.months >= 12) {
+											result.years += Math.floor(result.months / 12);
+											result.months %= 12;
+											}
+									
+											return result;
+										}
+									
+										// Add the ages
+										var totalAge = addAges(addAges(addAges(age1, age2), age3), age4);
+									
+										// Display the result
+										var resultElement = document.getElementById("workexp1");
+										resultElement.innerHTML = totalAge.years + " years, " + totalAge.months + " months, " + totalAge.days + " days";		
 									</script>
 									professional experience working as Software Test Engineer in top reputed organization. 
 									</a>
@@ -377,6 +412,12 @@
 
 
 <!---------Skill------------------------>
+<!-- Excellent--------- 100 to 90
+Very Good--------- 89 to 75
+Good-------------- 74 to 60
+Average----------- 59 to 45 
+Below Average----- 44 to 35 -->
+
 <div class="section" id="skill">
   <div class="container">
     <div class="card" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
@@ -394,7 +435,7 @@
 				data-aos-duration="2000"
 				role="progressbar"
 				aria-valuenow="60"
-				aria-valuemin="0" aria-valuemax="100" style="width: 90%;"></div><span class="progress-value">Excellent</span>
+				aria-valuemin="0" aria-valuemax="100" style="width: 95%;"></div><span class="progress-value">Excellent</span>
               </div>
             </div>
           </div>
@@ -408,7 +449,7 @@
 				data-aos-duration="2000" 
 				role="progressbar" 
 				aria-valuenow="60" 
-				aria-valuemin="0" aria-valuemax="100" style="width: 75%;"></div><span class="progress-value">Good</span>
+				aria-valuemin="0" aria-valuemax="100" style="width: 74%;"></div><span class="progress-value">Good</span>
               </div>
             </div>
           </div>
@@ -423,7 +464,7 @@
 				data-aos-offset="10" 
 				data-aos-duration="2000"
 				role="progressbar" aria-valuenow="60" 
-				aria-valuemin="0" aria-valuemax="100" style="width: 82%;"></div><span class="progress-value">Very Good</span>
+				aria-valuemin="0" aria-valuemax="100" style="width: 85%;"></div><span class="progress-value">Very Good</span>
               </div>
             </div>
           </div>
@@ -443,7 +484,7 @@
 		 </div>
 		  <div class="row">
           <div class="col-md-6">
-            <div class="progress-container progress-primary"><span class="progress-badge">L2-L3 Protocols:IP, ICMP, Routing</span>
+            <div class="progress-container progress-primary"><span class="progress-badge">L2-L3 Protocols:IP, ICMP, Routing - RIP, OSPF</span>
               <div class="progress">
                 <div 
 				class="progress-bar progress-bar-primary" 
@@ -464,7 +505,7 @@
 				data-aos-offset="10" 
 				data-aos-duration="2000"
 				role="progressbar" aria-valuenow="60" 
-				aria-valuemin="0" aria-valuemax="100" style="width: 80%;"></div><span class="progress-value">Very Good</span>
+				aria-valuemin="0" aria-valuemax="100" style="width: 78%;"></div><span class="progress-value">Very Good</span>
               </div>
             </div>
           </div>
@@ -503,7 +544,7 @@
 				class="progress-bar progress-bar-primary" 
 				data-aos="progress-full" 
 				data-aos-offset="10" 
-				data-aos-duration="2000" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 75%;"></div><span class="progress-value">Good</span>
+				data-aos-duration="2000" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 70%;"></div><span class="progress-value">Good</span>
               </div>
             </div>
           </div>
@@ -516,14 +557,41 @@
 				data-aos-offset="10" 
 				data-aos-duration="2000" 
 				role="progressbar" 
-				aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 75%;"></div><span class="progress-value">Good</span>
+				aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 73%;"></div><span class="progress-value">Good</span>
               </div>
             </div>
           </div>
 		  </div>
+
+		  <div class="row">
+			<div class="col-md-6">
+				<div class="progress-container progress-primary"><span class="progress-badge">Traffic Generator: IXIA Veriwave, Chariot, scapy</span>
+				<div class="progress">
+				  <div 
+				  class="progress-bar progress-bar-primary" 
+				  data-aos="progress-full" 
+				  data-aos-offset="10" 
+				  data-aos-duration="2000" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 65%;"></div><span class="progress-value">Good</span>
+				</div>
+			  </div>
+			</div>
+			<div class="col-md-6">
+				<div class="progress-container progress-primary"><span class="progress-badge">Traffic Generator: iPerf, neper, Netperf</span>
+				<div class="progress">
+				  <div 
+				  class="progress-bar progress-bar-primary" 
+				  data-aos="progress-full" 
+				  data-aos-offset="10" 
+				  data-aos-duration="2000" 
+				  role="progressbar" 
+				  aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 85%;"></div><span class="progress-value">Very Good</span>
+				</div>
+			  </div>
+			</div>
+			</div>		  
 		  <div class="row">
           <div class="col-md-6">
-            <div class="progress-container progress-primary"><span class="progress-badge">Apps: IXIA Veriwave, Chariot, iPerf</span>
+            <div class="progress-container progress-primary"><span class="progress-badge">Packet Analysis Tool: Wireshark, tcpdump</span>
               <div class="progress">
                 <div 
 				class="progress-bar progress-bar-primary" 
@@ -531,12 +599,12 @@
 				data-aos-offset="10" 
 				data-aos-duration="2000" 
 				role="progressbar" 
-				aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 87%;"></div><span class="progress-value">Very Good</span>
+				aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 65%;"></div><span class="progress-value">Good</span>
               </div>
             </div>
           </div>
 		  <div class="col-md-6">
-            <div class="progress-container progress-primary"><span class="progress-badge">Apps: hping, Wireshark, tcpdump, nmcli, netsh </span>
+            <div class="progress-container progress-primary"><span class="progress-badge">Apps: hping, nmcli, ip, ifconfig, netsh </span>
               <div class="progress">
                 <div 
 				class="progress-bar progress-bar-primary" 
@@ -544,7 +612,7 @@
 				data-aos-offset="10" 
 				data-aos-duration="2000" 
 				role="progressbar" 
-				aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 87%;"></div><span class="progress-value">Very Good</span>
+				aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 82%;"></div><span class="progress-value">Very Good</span>
               </div>
             </div>
           </div>
@@ -559,12 +627,12 @@
 				data-aos-offset="10" 
 				data-aos-duration="2000" 
 				role="progressbar" 
-				aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 80%;"></div><span class="progress-value">Very Good</span>
+				aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 75%;"></div><span class="progress-value">Very Good</span>
               </div>
             </div>
           </div>
 		  <div class="col-md-6">
-            <div class="progress-container progress-primary"><span class="progress-badge">Automation: Python, Windows & Linux Scripting</span>
+            <div class="progress-container progress-primary"><span class="progress-badge">Quality Control & Quality Analyst</span>
                <div class="progress">
 				<div 
 				class="progress-bar progress-bar-primary" 
@@ -572,11 +640,95 @@
 				data-aos-offset="10" 
 				data-aos-duration="2000" 
 				role="progressbar" 
-				aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 70%;"></div><span class="progress-value">Good</span>
+				aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 80%;"></div><span class="progress-value">Very Good</span>
               </div>
             </div>
           </div>
 		  </div>
+		  <div class="row">
+			<div class="col-md-6">
+			  <div class="progress-container progress-primary"><span class="progress-badge">Automation: Linux Bash Shell scripting </span>
+				<div class="progress">
+				  <div 
+				  class="progress-bar progress-bar-primary" 
+				  data-aos="progress-full" 
+				  data-aos-offset="10" 
+				  data-aos-duration="2000" 
+				  role="progressbar" 
+				  aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 85%;"></div><span class="progress-value">Very Good</span>
+				</div>
+			  </div>
+			</div>
+			<div class="col-md-6">
+			  <div class="progress-container progress-primary"><span class="progress-badge">Automation: BATCH & Powershell scripting</span>
+				 <div class="progress">
+				  <div 
+				  class="progress-bar progress-bar-primary" 
+				  data-aos="progress-full" 
+				  data-aos-offset="10" 
+				  data-aos-duration="2000" 
+				  role="progressbar" 
+				  aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 70%;"></div><span class="progress-value">Good</span>
+				</div>
+			  </div>
+			</div>
+			</div>
+			<div class="row">
+				<div class="col-md-6">
+				  <div class="progress-container progress-primary"><span class="progress-badge">Automation: Python - paramiko, ssl, csv </span>
+					<div class="progress">
+					  <div 
+					  class="progress-bar progress-bar-primary" 
+					  data-aos="progress-full" 
+					  data-aos-offset="10" 
+					  data-aos-duration="2000" 
+					  role="progressbar" 
+					  aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"></div><span class="progress-value">Good</span>
+					</div>
+				  </div>
+				</div>
+				<div class="col-md-6">
+				  <div class="progress-container progress-primary"><span class="progress-badge">Automation: Python - pyVim, pyVmomi</span>
+					 <div class="progress">
+					  <div 
+					  class="progress-bar progress-bar-primary" 
+					  data-aos="progress-full" 
+					  data-aos-offset="10" 
+					  data-aos-duration="2000" 
+					  role="progressbar" 
+					  aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 58%;"></div><span class="progress-value">Average</span>
+					</div>
+				  </div>
+				</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+					  <div class="progress-container progress-primary"><span class="progress-badge">Automation: Python - OS, subprocess, logging </span>
+						<div class="progress">
+						  <div 
+						  class="progress-bar progress-bar-primary" 
+						  data-aos="progress-full" 
+						  data-aos-offset="10" 
+						  data-aos-duration="2000" 
+						  role="progressbar" 
+						  aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"></div><span class="progress-value">Good</span>
+						</div>
+					  </div>
+					</div>
+					<div class="col-md-6">
+					  <div class="progress-container progress-primary"><span class="progress-badge">Automation: PowerCLI</span>
+						 <div class="progress">
+						  <div 
+						  class="progress-bar progress-bar-primary" 
+						  data-aos="progress-full" 
+						  data-aos-offset="10" 
+						  data-aos-duration="2000" 
+						  role="progressbar" 
+						  aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 45%;"></div><span class="progress-value">Average</span>
+						</div>
+					  </div>
+					</div>
+					</div>
 		  <div class="row">
 		  <div class="col-md-6">
             <div class="progress-container progress-primary"><span class="progress-badge">JIRA, IBM ClearQuest, ApTest, MS-Office</span>
@@ -587,12 +739,12 @@
 				data-aos-offset="10" 
 				data-aos-duration="2000" 
 				role="progressbar" 
-				aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 80%;"></div><span class="progress-value">Very Good</span>
+				aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 85%;"></div><span class="progress-value">Very Good</span>
               </div>
             </div>
           </div>
 		  <div class="col-md-6">
-            <div class="progress-container progress-primary"><span class="progress-badge">Firewall, Routers, Switches, APs</span>
+            <div class="progress-container progress-primary"><span class="progress-badge">Firewall, Routers, Switches, AP</span>
 			<div class="progress">
                 <div 
 				class="progress-bar progress-bar-primary" 
@@ -600,14 +752,42 @@
 				data-aos-offset="10" 
 				data-aos-duration="2000" 
 				role="progressbar" 
-				aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 50%;"></div><span class="progress-value">Average</span>
+				aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 55%;"></div><span class="progress-value">Average</span>
               </div>
             </div>
           </div>		
 		</div>
+		<div class="row">		  
+			<div class="col-md-6">
+			  <div class="progress-container progress-primary"><span class="progress-badge">Virtualization: ESX VMware, Hyper V</span>
+			  <div class="progress">
+				  <div 
+				  class="progress-bar progress-bar-primary" 
+				  data-aos="progress-full" 
+				  data-aos-offset="10" 
+				  data-aos-duration="2000" 
+				  role="progressbar" 
+				  aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 70%;"></div><span class="progress-value">Good</span>
+				</div>
+			  </div>
+			</div>
+			<div class="col-md-6">
+			  <div class="progress-container progress-primary"><span class="progress-badge">Virtualization: KVM, Linux Namespace</span>
+			  <div class="progress">
+				  <div 
+				  class="progress-bar progress-bar-primary" 
+				  data-aos="progress-full" 
+				  data-aos-offset="10" 
+				  data-aos-duration="2000" 
+				  role="progressbar" 
+				  aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 55%;"></div><span class="progress-value">Average</span>
+				</div>
+			  </div>
+			</div>
+		  </div>
 		 <div class="row">		  
 		  <div class="col-md-6">
-            <div class="progress-container progress-primary"><span class="progress-badge">Network products:ESX VMware, HyperV, KVM</span>
+            <div class="progress-container progress-primary"><span class="progress-badge">Windows Server: AD, DHCP</span>
 			<div class="progress">
                 <div 
 				class="progress-bar progress-bar-primary" 
@@ -615,12 +795,12 @@
 				data-aos-offset="10" 
 				data-aos-duration="2000" 
 				role="progressbar" 
-				aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 62%;"></div><span class="progress-value">Good</span>
+				aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 70%;"></div><span class="progress-value">Good</span>
               </div>
             </div>
           </div>
 		  <div class="col-md-6">
-            <div class="progress-container progress-primary"><span class="progress-badge">Windows Server: AD, DHCP, DNS, NPS, IIS, CA</span>
+            <div class="progress-container progress-primary"><span class="progress-badge">Windows Server: DNS, NPS, IIS, CA</span>
 			<div class="progress">
                 <div 
 				class="progress-bar progress-bar-primary" 
@@ -628,14 +808,42 @@
 				data-aos-offset="10" 
 				data-aos-duration="2000" 
 				role="progressbar" 
-				aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 65%;"></div><span class="progress-value">Good</span>
+				aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 55%;"></div><span class="progress-value">Average</span>
               </div>
             </div>
           </div>
 		</div>
+		<div class="row">		  
+			<div class="col-md-6">
+			  <div class="progress-container progress-primary"><span class="progress-badge">Intel Ethernet Product</span>
+			  <div class="progress">
+				  <div 
+				  class="progress-bar progress-bar-primary" 
+				  data-aos="progress-full" 
+				  data-aos-offset="10" 
+				  data-aos-duration="2000" 
+				  role="progressbar" 
+				  aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 70%;"></div><span class="progress-value">Good</span>
+				</div>
+			  </div>
+			</div>
+			<div class="col-md-6">
+			  <div class="progress-container progress-primary"><span class="progress-badge">Nvidia Mellanox ConnectX SmartNIC </span>
+			  <div class="progress">
+				  <div 
+				  class="progress-bar progress-bar-primary" 
+				  data-aos="progress-full" 
+				  data-aos-offset="10" 
+				  data-aos-duration="2000" 
+				  role="progressbar" 
+				  aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 55%;"></div><span class="progress-value">Average</span>
+				</div>
+			  </div>
+			</div>
+		  </div>
 		 <div class="row">		  
 		  <div class="col-md-6">
-            <div class="progress-container progress-primary"><span class="progress-badge">HTML, DNS Registar, WEB HOSTING, NEXT CLOUD</span>
+            <div class="progress-container progress-primary"><span class="progress-badge">DNS Registar, WEB HOSTING, NEXT CLOUD</span>
 			<div class="progress">
                 <div 
 				class="progress-bar progress-bar-primary" 
@@ -660,9 +868,7 @@
               </div>
             </div>
           </div>
-		  <div class="col-md-6">
-		
-		  
+		  <div class="col-md-6">		  
         </div>
       </div>
     </div>
@@ -678,19 +884,84 @@
 			<div class="row">
 				<div class="col-md-3 bg-primary"  data-aos="fade-right" data-aos-offset="50" data-aos-duration="500" style="padding-top: 2%;">
 					<div class="card-body cc-experience-header">
-						<p>DEC 2021 - Present</p>
-						<div class="h5" >INTEL</div>
+						<div class="h5">INTEL</div><br>
+						<p>29 Nov 2021<br> - <br>Present</p><br>						
+						<a id="Intelworkexp"></a>
+						<script>
+							//collect input from HTML form and convert into date format (mm/dd/yyyy)
+							var dob = new Date("11/29/2021");
+							
+							//extract the year, month, and date from user date input
+							var dobYear = dob.getYear();
+							var dobMonth = dob.getMonth();
+							var dobDate = dob.getDate();
+							
+							//get the current date from the system
+							var now = new Date();
+							//extract the year, month, and date from current date
+							var currentYear = now.getYear();
+							var currentMonth = now.getMonth();
+							var currentDate = now.getDate();
+							
+							//declare a variable to collect the age in year, month, and days
+							var age = {};
+							var ageString = "";
+						  
+							//get years
+							var yearAge = currentYear - dobYear;
+							
+							//get months
+							if (currentMonth >= dobMonth)
+							  //get months when current month is greater
+							  var monthAge = currentMonth - dobMonth;
+							else {
+							  yearAge--;
+							  var monthAge = 12 + currentMonth - dobMonth;
+							}
+
+							//get days
+							if (currentDate >= dobDate)
+							  //get days when the current date is greater
+							  var dateAge = currentDate - dobDate;
+							else {
+							  monthAge--;
+							  var dateAge = 31 + currentDate - dobDate;
+
+							  if (monthAge < 0) {
+								monthAge = 11;
+								yearAge--;
+							  }
+							}
+							//group the age in a single variable
+							age = {
+							years: yearAge,
+							months: monthAge,
+							days: dateAge
+							};
+							  
+							var ageString = age.years  + " years, " + age.months + " months, " + age.days + " days ";
+
+							//display the calculated age
+							//document.write("  "+ageString);
+							document.getElementById("Intelworkexp").innerHTML = " " + ageString;				
+						</script>
 					</div>
 				</div>
 				<div class="col-md-9" data-aos="fade-left" data-aos-offset="50" data-aos-duration="500">
 					<div class="card-body">
-						<div class="h5">Software Validation Engineer</div>
+						<div class="h5">Driver Validation Engineer</div>
 						<p style="text-align:center; text-align:justify;text-justify: inter-word;">
 							<ul style="text-align:center; text-align:justify;text-justify: inter-word;">
-								<li style="text-align:center; text-align:justify;text-justify: inter-word;">Executed performance testing on Intel Ethernet 800 Series Network adapters</li>
+								<li style="text-align:center; text-align:justify;text-justify: inter-word;">Executed LAN Throughput and Latency performance testing for Intel Ethernet 800 and 700 Series Network adapters</li>
+								<li style="text-align:center; text-align:justify;text-justify: inter-word;">Created an Autoamtion script using Shell, Powershell, and python for regression performance testing for Intel Ethernet 800 and 700 Series Network adapters</li>
 								<li style="text-align:center; text-align:justify;text-justify: inter-word;">Validated and collected performance data for <a href="https://ipdk.io/" target="_blank">IPDK P4-OVS</a> on Intel Network adapters</li>
 								<li style="text-align:center; text-align:justify;text-justify: inter-word;">Executed manual performance testing for ESX and HyperV following features SR-IOV, VMDq / VMMQ, Direct PCIe Assignment and VxLAN</li>
-								<li style="text-align:center; text-align:justify;text-justify: inter-word;">Automated ESX performance testing with Intel Network adapters using Python, powerCLI, iperf, netperf and bash</li>
+								<li style="text-align:center; text-align:justify;text-justify: inter-word;">Automated ESX performance testing with Intel Network adapters using Python (pyVim, pyVmomi), powerCLI, iperf, netperf and bash</li>
+								<li style="text-align:center; text-align:justify;text-justify: inter-word;">Participated in comparative benchmark performance testing and collected the perf report for Intel E800 series Network adapter, Nvidia Mellanox CX6, CX7 Adapters </li>
+								<li style="text-align:center; text-align:justify;text-justify: inter-word;">Learned, Explored and Tested performance of Intel IPU Adapters features like, </li>
+								Basic IPU Host LAN Throughput and Latency Performance</br>
+								Basic IPU Accelerator LAN Throughput and Latency Performance</br>
+								Configuring Maximum number of P4 rules supported by Intel IPU TDI features - Simple Exact Match, Large Exact Match and FlowCounter</br>
 							</ul>
 						</p>
 					</div>
@@ -699,10 +970,38 @@
 		</div>
 		<div class="card">
 			<div class="row">
-				<div class="col-md-3 bg-primary" data-aos="fade-right" data-aos-offset="50" data-aos-duration="500" style="padding-top: 10%;">
+				<div class="col-md-3 bg-primary" data-aos="fade-right" data-aos-offset="50" data-aos-duration="500" style="padding-top: 2%;">
 					<div class="card-body cc-experience-header">
-						<p >APR 2019 - NOV 2021</p>
-						<div class="h5">SONICWALL</div>
+						<div class="h5">SONICWALL</div><br>
+						<p>22 APR 2019 </br>-</br> 22 NOV 2021</p><br>
+						<a id="Sonicwallworkexp"></a>
+						<script>
+							// Collect input from HTML form and convert into date format (mm/dd/yyyy)
+							var startDate = new Date("04/22/2019"); // Replace with your start date
+							var endDate = new Date("11/22/2021");   // Replace with your end date
+
+							// Calculate the difference in milliseconds between the two dates
+							var dateDifference = endDate - startDate;
+
+							// Calculate years, months, and days
+							var yearsDifference = endDate.getFullYear() - startDate.getFullYear();
+							var monthsDifference = endDate.getMonth() - startDate.getMonth();
+							var daysDifference = endDate.getDate() - startDate.getDate();
+
+							// Adjust for negative values
+							if (daysDifference < 0) {
+								monthsDifference--;
+								daysDifference += new Date(endDate.getFullYear(), endDate.getMonth(), 0).getDate();
+							}
+							if (monthsDifference < 0) {
+								yearsDifference--;
+								monthsDifference += 12;
+							}
+
+							// Display the calculated age
+							var ageString = yearsDifference + " years, " + monthsDifference + " months, " + daysDifference + " days";
+							document.getElementById("Sonicwallworkexp").innerHTML = " " + ageString;
+						</script>
 					</div>
 				</div>
 				<div class="col-md-9" data-aos="fade-left" data-aos-offset="50" data-aos-duration="500">
@@ -724,10 +1023,38 @@
 		</div>
 		<div class="card">
 			<div class="row">
-				<div class="col-md-3 bg-primary" data-aos="fade-right" data-aos-offset="50" data-aos-duration="500"  style="padding-top: 6%;">
+				<div class="col-md-3 bg-primary" data-aos="fade-right" data-aos-offset="50" data-aos-duration="500"  style="padding-top: 2%;">
 					<div class="card-body cc-experience-header">
-						<p>DEC 2017 - MAR 2019</p>
-						<div class="h5">QUALCOMM</div>
+						<div class="h5">QUALCOMM</div><br>
+						<p>20 DEC 2017 </br>-</br> 29 MAR 2019</p><br>
+						<a id="Qworkexp"></a>
+						<script>
+							// Collect input from HTML form and convert into date format (mm/dd/yyyy)
+							var startDate = new Date("12/20/2017"); // Replace with your start date
+							var endDate = new Date("03/29/2019");   // Replace with your end date
+
+							// Calculate the difference in milliseconds between the two dates
+							var dateDifference = endDate - startDate;
+
+							// Calculate years, months, and days
+							var yearsDifference = endDate.getFullYear() - startDate.getFullYear();
+							var monthsDifference = endDate.getMonth() - startDate.getMonth();
+							var daysDifference = endDate.getDate() - startDate.getDate();
+
+							// Adjust for negative values
+							if (daysDifference < 0) {
+								monthsDifference--;
+								daysDifference += new Date(endDate.getFullYear(), endDate.getMonth(), 0).getDate();
+							}
+							if (monthsDifference < 0) {
+								yearsDifference--;
+								monthsDifference += 12;
+							}
+
+							// Display the calculated age
+							var ageString = yearsDifference + " years, " + monthsDifference + " months, " + daysDifference + " days";
+							document.getElementById("Qworkexp").innerHTML = " " + ageString;
+						</script>
 					</div>
 				</div>
 			<div class="col-md-9" data-aos="fade-left" data-aos-offset="50" data-aos-duration="500">
@@ -746,10 +1073,38 @@
 		</div>
 		<div class="card">
 			<div class="row">
-				<div class="col-md-3 bg-primary" data-aos="fade-right" data-aos-offset="50" data-aos-duration="500"  style="padding-top: 10%;">
+				<div class="col-md-3 bg-primary" data-aos="fade-right" data-aos-offset="50" data-aos-duration="500"  style="padding-top: 2%;">
 					<div class="card-body cc-experience-header">
-						<p>OCT 2014 - NOV 2016</p>
-						<div class="h5">HCL Technologies</div>
+						<div class="h5">HCL Technologies</div><br>
+						<p>16 OCT 2014 </br>-</br> 29 NOV 2016</p><br>
+						<a id="HCLworkexp"></a>
+						<script>
+							// Collect input from HTML form and convert into date format (mm/dd/yyyy)
+							var startDate = new Date("10/16/2014"); // Replace with your start date
+							var endDate = new Date("11/29/2016");   // Replace with your end date
+
+							// Calculate the difference in milliseconds between the two dates
+							var dateDifference = endDate - startDate;
+
+							// Calculate years, months, and days
+							var yearsDifference = endDate.getFullYear() - startDate.getFullYear();
+							var monthsDifference = endDate.getMonth() - startDate.getMonth();
+							var daysDifference = endDate.getDate() - startDate.getDate();
+
+							// Adjust for negative values
+							if (daysDifference < 0) {
+								monthsDifference--;
+								daysDifference += new Date(endDate.getFullYear(), endDate.getMonth(), 0).getDate();
+							}
+							if (monthsDifference < 0) {
+								yearsDifference--;
+								monthsDifference += 12;
+							}
+
+							// Display the calculated age
+							var ageString = yearsDifference + " years, " + monthsDifference + " months, " + daysDifference + " days";
+							document.getElementById("HCLworkexp").innerHTML = " " + ageString;
+						</script>
 					</div>
 				</div>
 			<div class="col-md-9" data-aos="fade-left" data-aos-offset="50" data-aos-duration="500">

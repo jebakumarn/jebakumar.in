@@ -47,7 +47,7 @@
 			}
 		</style>
 	</head>	
-<title>Intel Ethernet Network Adapter - ESX Performance Testing</title>
+<title>Intel Ethernet Network Adapter - HyperV and ESX Performance Testing</title>
 
 <body>
 
@@ -55,7 +55,7 @@
 		<tr>
 			<th>Project Name</th>
 			<th style="padding: 10px;">:</th>
-			<th>Intel Ethernet network Adapter - ESX Performance Testing</th>
+			<th>Intel Ethernet network Adapter - HyperV and ESX Performance Testing</th>
 		</tr>
 		<tr>
 			<th>Project Duration</th>
@@ -80,9 +80,14 @@
 		</tr>
 	</table>
 	<table class="content">
-		<td>This project aimed to collect the LAN Throughput and Latency performance of Intel E700 Series Ethernet Network adapters in test environment and validating against defined KPI.</td>
+		<tr>
+			<ul class="ul1">
+				<li>
+					This project aimed to collect the East to West and North to South Virtualization traffic Throughput performance of Intel Ethernet Network adapters for VMDq/VMQ, SR-IOV, PCIe passthrough/Direct PCIe assignment features.
+				</li>
+			</ul>
+		</tr>
 	</table>
-
 	<!-- Roles and Responsbilites -->
 	<table class="headings">
 		<tr>
@@ -91,10 +96,13 @@
 	</table>
 	<table class="content">
 		<ul class="ul1">
+			<li>Prepared Test strategy document for SR-IOV, VMDq/VMQ, Direct-PCIe assignment/PCIe passthrough Virtualization feature </li>
 			<li>Reseting BIOS configuration to default values and applying tunned BIOS configuration manually</li>
-			<li>Bringing up Test system: By installing OS (Linux RHEL or Windows Server 2019/2022 Data center)</li>
+			<li>Bringing up Test system: By installing VMware ESXi OS </li>
+			<li>Configure Test feature and required vSwitch/DVS </li>
+			<li>Bringing up Multiple VMs configured with test requriement feature. </li>
 			<li>Applying performance tunned configuration to Kernel, OS, network adapter and Traffic generator applications based on test requirement. </li>
-			<li>Executing LAN Throughput performance test by manullay or using automated scripts using iperf or Netperf traffic generator to collect following performance data sets with CPU utilization of the SUT test system: </li>
+			<li>Executing Virtualalization Traffic Throughput performance test by manullay or using automated scripts using iperf or Netperf traffic generator to collect following performance data sets with CPU utilization of the SUT test system: </li>
 			<ul>
 				<li>TCP Traffic Buffer Size = 32 to 65535<br></li>
 				<li>UDP Traffic Buffer Size = 32 to MAX MTU Size<br></li>
@@ -102,7 +110,6 @@
 				<li>Number of Test ports in Ethernet Adapter = 1 to MAX number of PF ports supported in Network Adapter<br></li>
 				<li>Traffic Directions = UX (TX , RX) and BX</li>
 			</ul>
-			<li>Executing Latency Test by manuall or using automated scripts using netperf tool</li>
 			<li>Analyse collected results, prepare a report for it and share it to team and management</li>
 		</ul>
 	</table>
@@ -115,27 +122,28 @@
 	</table>
 	<table class="tools">
 		<tr>
-			<th>iPerf2</th>
+			<th>iPerf2 and Netperf</th>
 			<th style="padding: 10px;">:</th>
-			<td>used for collecting TCP and UDP LAN Throughput Performance Data</td>
+			<td>used for collecting TCP and UDP Traffic Throughput Performance Data</td>
 		</tr>
 		<tr>
-			<th>netperf</th>
-			<th style="padding: 10px;">:</th>
-			<td>used for collecting TCP / UDP LAN Throughput and Latency Performance Data</td>
-		</tr>
-		<tr>
-			<th>Bash Shell and python script</th>
+			<th>Shell and python script</th>
 			<th style="padding: 10px;">:</th>
 			<td>
-				<p>used for collecting LAN Throughput Performance data on Linux (RHEL) OS </p>
-				<p>used parmiko, subprocess, os, openpyxl python modules to automate End to End Test</p>
+				<p>used pyVim, pyVmomi, ssl, requests, parmiko, subprocess, os, logging, time, tabulate, csv python modules to automate End to End Test</p>
+			</td>
+		</tr>
+		<tr>
+			<th>PowerCLI</th>
+			<th style="padding: 10px;">:</th>
+			<td>
+				<p>used for configuring Vcenter and VMs</p>
 			</td>
 		</tr>
 		<tr>
 			<th>BAT and Powershell script</th>
 			<th style="padding: 10px;">:</th>
-			<td>used for collecting LAN Throughput Performance data on Windows Server OS</td>
+			<td>used for collecting HyperV Throughput Performance data on Windows Server OS</td>
 		</tr>
 	</table>
 
@@ -148,7 +156,8 @@
 	<table class="content">
 		<ul class="ul1">
 			<!-- <li>Manually executing LAN performance test and collecting result will take more time</li> -->
-			<li>Collecting One set of LAN performance test result by manually takes ~ 12 to 14 hours. If each traffic test executes for 30 seconds</li>
+			<li>Configuring virtualization and its feature manually on Host system or Guest VM will take more time and high risk in end up with mistakes and misconfiguration. </li>
+			<li>Collecting Throughput performance test result by manually will takes days. If each traffic test executes for 30 seconds</li>
 		</ul>
 	</table>
 
@@ -160,16 +169,17 @@
 	</table>
 	<table class="content">
 		<ul class="ul1">
-			<li>Using Shell, BAT, powershell and Python Automated LAN performance test.</li>
+			<li>using Powercli, shell, powershell commands and python paramiko pyVim pyVmomi modules automated configuring virtualization feature</li>
 			<li>Reduced execution time to Half without manuall intervention using standalone automation script</li>
 			<li>Automated script will take care below things</li>
 			<ul>
-				<li>Appplying Performance Tunning configurations to Test systems and Test Network Adapters</li>
-				<li>Installing Traffic Generator Tools and other required depedencies packages, apps, libs </li>
-				<li>Collecting Test System information - OS details, Network Adapter details, Kernel details, hardware information and other basic informations</li>
-				<li>Testing connectivity between SUT to each client test system</li>
-				<li>If connectivity check passed, start execuing LAN performance test with multiple scalable parameters</li>
-				<li>Each test will collect Throughput data and CPU utilization data.</li>
+				<li>configuring virtualization features like SR-IOV, VMDq, Direct PCI-e passthrough</li>
+				<li>Appplying Performance Tunning configurations to Host, Guest systems and Test Network Adapters</li>
+				<li>Installing Traffic Generator Tools and other required depedencies packages, apps, libs on all required systems </li>
+				<li>Collecting Test Host and Guest System information - OS details, Network Adapter details, Kernel details, hardware information and other basic informations</li>
+				<li>Testing connectivity between SUT VM to each client test VMs</li>
+				<li>If connectivity check passed, start execuing LAN performance test with multiple scalable parameters and parelly collecting each test execution logs</li>
+				<li>Each test will collect Throughput data, Host & Guest CPU utilization data and execution logs.</li>
 				<li>Collected data will redirect to Excel CSV file</li>
 			</ul>				
 		</ul>
@@ -183,9 +193,9 @@
 	</table>
 	<table class="content">
 		<ul class="ul1">
-			<li>Intel® Ethernet Converged Network Adapter XL710-QDA2</li>
-			<li>Intel® Ethernet Network Adapter XXV710-DA2</li>				
-			<li>Intel® Ethernet Network Adapter X710-T4L</li>
+			<li>Intel® Ethernet Network Adapter E810-2CQDA1 / CQDA2</li>
+			<li>Intel® Ethernet Network Adapter E810-XXVDA2</li>				
+			<li>Intel® Ethernet Network Adapter E810-XXVDA4</li>
 		</ul>
 	</table>
 
@@ -197,21 +207,24 @@
 	</table>
 	<table class="content">
 		<ul class="ul1">
-			<li>Product Link Page</li>
+			<!-- <li>Product Link Page</li>
 			<ul>
 				<li>
 					<a href="https://www.intel.com/content/www/us/en/products/details/ethernet/700-network-adapters.html">https://www.intel.com/content/www/us/en/products/details/ethernet/700-network-adapters.html </a>
 					
 				</li>
-			</ul>
+			</ul> -->
 			<li>Automated Script Link</li>
 			<ul>
 				<li>
-					<a href="https://github.com/jebakumarn/Windows_PWSH">https://github.com/jebakumarn/Windows_PWSH</a>
+					<a href="https://github.com/jebakumarn/JK_ESX_Perf_Script">https://github.com/jebakumarn/JK_ESX_Perf_Script</a>
 				</li>
 				<li>
-					<a href="https://github.com/jebakumarn/StandlonePerfTest">https://github.com/jebakumarn/StandlonePerfTest</a>
+					<a href="https://github.com/jebakumarn/Virtualization_TPUT">https://github.com/jebakumarn/Virtualization_TPUT</a>
 				</li>
+				<!-- <li>
+					<a href="https://github.com/jebakumarn/NCNG_Perflab_Windows_Throughput">https://github.com/jebakumarn/NCNG_Perflab_Windows_Throughput</a>
+				</li> -->
 			</ul>
 		</ul>
 	</table>
