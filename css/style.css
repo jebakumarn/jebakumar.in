@@ -72,7 +72,7 @@
   }
   
   header.portfolio-hero {
-    height: 100vh;
+    height: 40vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -138,6 +138,26 @@
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
   }
   
+  .card-title {
+    color: var(--text-color);
+    font-size: 1.25rem;
+    font-weight: bold;
+    transition: var(--transition);
+  }
+
+  .card-body {
+    padding: 1rem;
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    transition: var(--transition);
+  }
+
+  .card-text {
+    color: var(--secondary-color);
+    font-size: 1rem;
+    line-height: 1.5;
+    transition: var(--transition);
+  }
   /* Footer */
   .footer {
     background-color: var(--footer-bg);
