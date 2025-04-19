@@ -13,17 +13,17 @@
 </head>
 <body data-theme="light">
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light" id="main-nav">
+    <nav class="navbar navbar-expand-lg fixed-top navbar-transparent navbar-light bg-light" id="main-nav">
         <div class="container">
-            <a class="navbar-brand" href="index.html">Jebakumar</a>
+            <a class="navbar-brand" href="index.html"><i class="fa fa-home"></i></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a class="nav-link active" href="index.html">Home</a>
-                    </li>
+                    </li> -->
                     <li class="nav-item">
                         <a class="nav-link" href="blog.html">Blog</a>
                     </li>
@@ -41,39 +41,229 @@
         </div>
     </nav>
 
-    <!-- Hero Section with Animation -->
-    <header class="hero-section">
-        <div class="container">
-            <div class="row align-items-center min-vh-100">
-                <div class="col-lg-6">
-                    <h1 class="display-4 fw-bold animate__animated animate__fadeInLeft">Welcome to My Portfolio</h1>
-                    <p class="lead mt-3 animate__animated animate__fadeInLeft animate__delay-1s">Education, Portfolio & Blog - All in one place</p>
-                    <div class="mt-4 animate__animated animate__fadeInLeft animate__delay-2s">
-                        <a href="about.html" class="btn btn-primary me-2">Learn More</a>
-                        <a href="contact.html" class="btn btn-outline-primary">Contact Me</a>
-                    </div>
+    <header class="book-container">
+        <div class="book" id="book">
+            <!-- Page 1 -->
+            <div class="page" id="page-1">
+                <div class="page-content">
+                    <h2>Chapter 1: The Beginning</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia, urna a volutpat tincidunt, massa mi faucibus felis, at condimentum mauris dolor eget nisl. Phasellus viverra turpis in tellus scelerisque, eget tristique quam consectetur.</p>
+                    <p>Nulla facilisi. Cras non velit nec magna imperdiet mollis. Fusce euismod tortor at tristique luctus. Nunc tempus lectus ac neque scelerisque, id pharetra nisl lobortis. Duis iaculis mollis mauris, quis mollis nulla rhoncus sed.</p>
+                    <p>Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Mauris eleifend libero eget dolor viverra, ac rutrum elit gravida. Quisque vehicula dapibus purus, vel auctor tellus dignissim id.</p>
                 </div>
-                <div class="col-lg-6 animate__animated animate__fadeInRight">
-                    <!-- Image Slideshow -->
-                    <div class="slideshow-container">
-                        <div class="slideshow-slide active">
-                            <img src="assets/images/slide1.jpg" alt="Slide 1" class="img-fluid rounded shadow">
+                <div class="page-number">Page 1</div>
+                <div class="edge edge-right" onclick="nextPage()"></div>
+                <div class="corner corner-right" onclick="nextPage()">
+                    <div class="page-corner-fold"></div>
+                </div>
+            </div>
+            
+            <!-- Page 2 -->
+            <div class="page" id="page-2" style="transform: rotateY(180deg); z-index: -1;">
+                <div class="page-content">
+                    <h2>Chapter 2: The Journey</h2>
+                    <header class="hero-section">
+                        <div class="container">
+                            <div class="row align-items-center min-vh-10">
+                                <div class="col-lg-6">
+                                    <h1 class="display-4 fw-bold animate__animated animate__fadeInLeft">Welcome to My Portfolio</h1>
+                                    <p class="lead mt-3 animate__animated animate__fadeInLeft animate__delay-1s">
+                                        Hello! Hi, I'm Jebakumar Govindaswamy.
+                                        Here is a quick and little overview about me.
+                                        Born and Bought up in a village <a href="https://goo.gl/maps/DCQM57LPEbbXLxKf7" target="_blank">Manicaknoor Paiyur</a>
+                                        which is located in Krishnagiri District of Tamil Nadu state.
+                                        I have Sucessfully completed my Under Graduate in specilization of Information Technology on 2014 at 
+                                        <a href= "https://goo.gl/maps/DJWDCLqsPn9F8iCV9" target="_blank">Meenakshi College of Engineering, Chennai, Tamil Nadu.</a>
+                                        Currently I live in <a href="https://goo.gl/maps/XTbjtpCqvn98C9sk9" target="_blank">Bangalore, Karnataka, India.</a>
+                                            I have flourishing                             
+                                            <a id="workexp1">									
+                                            <script>
+                                                //collect input from HTML form and convert into date format (mm/dd/yyyy)
+                                                // var dob = new Date("07/11/2021");
+                                                var dob = new Date("11/29/2021");
+                                                
+                                                //extract the year, month, and date from user date input
+                                                var dobYear = dob.getYear();
+                                                var dobMonth = dob.getMonth();
+                                                var dobDate = dob.getDate();
+                                                
+                                                //get the current date from the system
+                                                var now = new Date();
+                                                //extract the year, month, and date from current date
+                                                var currentYear = now.getYear();
+                                                var currentMonth = now.getMonth();
+                                                var currentDate = now.getDate();
+                                                
+                                                //declare a variable to collect the age in year, month, and days
+                                                var age = {};
+                                                var ageString = "";
+                                                
+                                                //get years
+                                                var yearAge = currentYear - dobYear;
+                                                
+                                                //get months
+                                                if (currentMonth >= dobMonth)
+                                                    //get months when current month is greater
+                                                    var monthAge = currentMonth - dobMonth;
+                                                else {
+                                                    yearAge--;
+                                                    var monthAge = 12 + currentMonth - dobMonth;
+                                                }
+                
+                                                //get days
+                                                if (currentDate >= dobDate)
+                                                    //get days when the current date is greater
+                                                    var dateAge = currentDate - dobDate;
+                                                else {
+                                                    monthAge--;
+                                                    var dateAge = 31 + currentDate - dobDate;
+                
+                                                    if (monthAge < 0) {
+                                                    monthAge = 11;
+                                                    yearAge--;
+                                                    }
+                                                }
+                                                //group the age in a single variable
+                                                age = {
+                                                years: yearAge,
+                                                months: monthAge,
+                                                days: dateAge
+                                                };
+                                                    
+                                                var ageString = age.years  + " years, " + age.months + " months, " + age.days + " days ";
+                
+                                                // //display the calculated age
+                                                // //document.write("  "+ageString);
+                                                // document.getElementById("workexp1").innerHTML = " " + ageString;		
+                                                var age1 = { years: age.years, months: age.months, days: age.days };
+                                                var age2 = { years: 2, months: 7, days: 0 };
+                                                var age3 = { years: 1, months: 3, days: 9 };
+                                                var age4 = { years: 2, months: 1, days: 13 };
+                                            
+                                                // Function to add two age objects
+                                                function addAges(ageA, ageB) {
+                                                    var result = {
+                                                    years: ageA.years + ageB.years,
+                                                    months: ageA.months + ageB.months,
+                                                    days: ageA.days + ageB.days
+                                                    };
+                                            
+                                                    // Adjust months and years if days exceed 30
+                                                    if (result.days >= 30) {
+                                                    result.months += Math.floor(result.days / 30);
+                                                    result.days %= 30;
+                                                    }
+                                            
+                                                    // Adjust months and years if months exceed 12
+                                                    if (result.months >= 12) {
+                                                    result.years += Math.floor(result.months / 12);
+                                                    result.months %= 12;
+                                                    }
+                                            
+                                                    return result;
+                                                }
+                                            
+                                                // Add the ages
+                                                var totalAge = addAges(addAges(addAges(age1, age2), age3), age4);
+                                            
+                                                // Display the result
+                                                var resultElement = document.getElementById("workexp1");
+                                                resultElement.innerHTML = totalAge.years + " years, " + totalAge.months + " months, " + totalAge.days + " days";		
+                                            </script>
+                                            professional experience working as Software Test Engineer in top reputed organization. 
+                                            </a>
+                                            I enjoy learning new things, solving problems in a easy way.
+                                            I love to share my knowledge to others. 
+                                            I like reading technical journals to stay updated on technologies.
+                                            I love spending time with my family and am amused by taking my kiddo Js out to unplanned trips. 
+                                            I always belive, Happiness and Satisfaction grows when we Keep everything in Super Simple. 
+                                        <br><br>
+                                    </p>
+                                </div>
+                                <div class="col-lg-6 animate__animated animate__fadeInRight">
+                                    <!-- Image Slideshow -->
+                                    <div class="slideshow-container">
+                                        <div class="slideshow-slide active">
+                                            <img src="assets/images/slide1.jpg" alt="Slide 1" class="img-fluid rounded shadow">
+                                        </div>
+                                        <div class="slideshow-slide">
+                                            <img src="assets/images/slide2.jpg" alt="Slide 2" class="img-fluid rounded shadow">
+                                        </div>
+                                        <div class="slideshow-slide">
+                                            <img src="assets/images/slide3.jpg" alt="Slide 3" class="img-fluid rounded shadow">
+                                        </div>
+                                        <div class="slideshow-slide">
+                                            <img src="assets/images/slide4.jpg" alt="Slide 4" class="img-fluid rounded shadow">
+                                        </div>
+                                        <div class="slideshow-slide">
+                                            <img src="assets/images/slide5.jpg" alt="Slide 5" class="img-fluid rounded shadow">
+                                        </div>
+                                        <div class="slideshow-slide">
+                                            <img src="assets/images/slide6.jpg" alt="Slide 6" class="img-fluid rounded shadow">
+                                        </div>
+                                        <div class="slideshow-slide active">
+                                            <img src="assets/images/Jason1Year.gif" alt="Jason1YearPic" class="img-fluid rounded shadow">
+                                        </div>
+                                        <div class="slideshow-slide active">
+                                            <img src="assets/images/Jebin1Year.png" alt="Jebin1YearPic" class="img-fluid rounded shadow">
+                                        </div>
+                                        <button class="slideshow-prev">&lt;</button>
+                                        <button class="slideshow-next">&gt;</button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="slideshow-slide">
-                            <img src="assets/images/slide2.jpg" alt="Slide 2" class="img-fluid rounded shadow">
-                        </div>
-                        <div class="slideshow-slide">
-                            <img src="assets/images/slide3.jpg" alt="Slide 3" class="img-fluid rounded shadow">
-                        </div>
-                        <button class="slideshow-prev">&lt;</button>
-                        <button class="slideshow-next">&gt;</button>
-                    </div>
+                    </header>
+                
+                </div>
+                <div class="page-number">Page 2</div>
+                <div class="edge edge-left" onclick="prevPage()"></div>
+                <div class="edge edge-right" onclick="nextPage()"></div>
+                <div class="corner corner-left" onclick="prevPage()">
+                    <div class="page-corner-fold"></div>
+                </div>
+                <div class="corner corner-right" onclick="nextPage()">
+                    <div class="page-corner-fold"></div>
+                </div>
+            </div>
+            
+            <!-- Page 3 -->
+            <div class="page" id="page-3" style="transform: rotateY(180deg); z-index: -2;">
+                <div class="page-content">
+                    <h2>Chapter 3: The Discovery</h2>
+                    <p>Etiam scelerisque neque vel nisl dictum, vitae cursus mi sollicitudin. Donec accumsan malesuada diam, sit amet hendrerit urna lobortis id. Sed rhoncus est eget bibendum faucibus. Praesent gravida laoreet dui, at molestie leo tincidunt vitae.</p>
+                    <p>Nulla sollicitudin augue magna, nec fringilla erat eleifend eu. Donec sed metus leo. Nulla facilisi. Sed in diam ut dui facilisis venenatis nec non justo. Nam tincidunt leo in massa rutrum ornare. Duis ac sem vel nulla dictum suscipit.</p>
+                    <p>Quisque ullamcorper enim quis elit efficitur, vel ullamcorper justo semper. Donec maximus lacinia risus, at pulvinar sapien viverra quis. Vestibulum pellentesque risus vel purus venenatis, quis porttitor sem consequat.</p>
+                </div>
+                <div class="page-number">Page 3</div>
+                <div class="edge edge-left" onclick="prevPage()"></div>
+                <div class="edge edge-right" onclick="nextPage()"></div>
+                <div class="corner corner-left" onclick="prevPage()">
+                    <div class="page-corner-fold"></div>
+                </div>
+                <div class="corner corner-right" onclick="nextPage()">
+                    <div class="page-corner-fold"></div>
+                </div>
+            </div>
+            
+            <!-- Page 4 -->
+            <div class="page" id="page-4" style="transform: rotateY(180deg); z-index: -3;">
+                <div class="page-content">
+                    <h2>Chapter 4: The Conclusion</h2>
+                    <p>Vivamus euismod, nulla ut facilisis ultricies, odio dui malesuada ipsum, eget tincidunt lectus est ut odio. Fusce commodo pellentesque libero, sit amet condimentum nulla varius vitae. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+                    <p>Integer sit amet nulla ut lacus sollicitudin commodo. Ut fermentum dui quis lectus fermentum, at sodales mauris convallis. Praesent pulvinar sit amet ligula eu ultricies. Nullam commodo est at felis efficitur vestibulum.</p>
+                    <p>Curabitur facilisis sapien nec orci dapibus, ac molestie sapien bibendum. Donec sed tortor sit amet magna tincidunt interdum. Nam vel ipsum at elit gravida faucibus. Suspendisse potenti. Sed gravida turpis nec est finibus, at accumsan risus dictum.</p>
+                </div>
+                <div class="page-number">Page 4</div>
+                <div class="edge edge-left" onclick="prevPage()"></div>
+                <div class="corner corner-left" onclick="prevPage()">
+                    <div class="page-corner-fold"></div>
                 </div>
             </div>
         </div>
     </header>
 
-    <!-- Content Sections -->
+    <!-- Feature Content Sections -->
     <section class="featured-content py-5">
         <div class="container">
             <h2 class="text-center mb-5">Featured Content</h2>
@@ -116,25 +306,17 @@
     <footer class="footer mt-auto py-4">
         <div class="container">
             <div class="row">
-                <div class="col-md-6">
-                    <p>&copy; 2025 Jebakumar. All rights reserved.</p>
+                <div class="col-md-6 text-md-start">
+                    <p class="text-start">&copy; JKC 2025.<br>All rights reserved.</p>
                 </div>
                 <div class="col-md-6 text-md-end">
                     <!-- Dark/Light Mode Toggle -->
-                    <div class="theme-switch-wrapper">
-                        <span>Light</span>
+                    <div class="theme-switch-wrapper position-fixed" style="bottom: 60px; right: 10px; z-index: 1000;">
                         <label class="theme-switch" for="checkbox">
                             <input type="checkbox" id="checkbox" />
                             <div class="slider round"></div>
                         </label>
-                        <span>Dark</span>
-                    </div>
-                    <!-- Social Links -->
-                    <div class="social-links mt-2">
-                        <a href="#" class="me-2"><i class="fab fa-github"></i></a>
-                        <a href="#" class="me-2"><i class="fab fa-linkedin"></i></a>
-                        <a href="#" class="me-2"><i class="fab fa-twitter"></i></a>
-                    </div>
+                    </div>                    
                 </div>
             </div>
         </div>

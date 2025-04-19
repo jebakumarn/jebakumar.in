@@ -13,17 +13,17 @@
 </head>
 <body data-theme="light">
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light" id="main-nav">
+    <nav class="navbar navbar-expand-lg fixed-top navbar-transparent navbar-light bg-light" id="main-nav">
         <div class="container">
-            <a class="navbar-brand" href="index.html">Jebakumar</a>
+            <a class="navbar-brand" href="index.html"><i class="fa fa-home"></i></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html">Home</a>
-                    </li>
+                    <!-- <li class="nav-item">
+                        <a class="nav-link active" href="index.html">Home</a>
+                    </li> -->
                     <li class="nav-item">
                         <a class="nav-link" href="blog.html">Blog</a>
                     </li>
@@ -34,7 +34,7 @@
                         <a class="nav-link" href="about.html">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="contact.html">Contact</a>
+                        <a class="nav-link" href="contact.html">Contact</a>
                     </li>
                 </ul>
             </div>
@@ -149,25 +149,17 @@
     <footer class="footer mt-auto py-4">
         <div class="container">
             <div class="row">
-                <div class="col-md-6">
-                    <p>&copy; 2025 Jebakumar. All rights reserved.</p>
+                <div class="col-md-6 text-md-start">
+                    <p class="text-start">&copy; JKC 2025.<br>All rights reserved.</p>
                 </div>
                 <div class="col-md-6 text-md-end">
                     <!-- Dark/Light Mode Toggle -->
-                    <div class="theme-switch-wrapper">
-                        <span>Light</span>
+                    <div class="theme-switch-wrapper position-fixed" style="bottom: 60px; right: 10px; z-index: 1000;">
                         <label class="theme-switch" for="checkbox">
                             <input type="checkbox" id="checkbox" />
                             <div class="slider round"></div>
                         </label>
-                        <span>Dark</span>
-                    </div>
-                    <!-- Social Links -->
-                    <div class="social-links mt-2">
-                        <a href="#" class="me-2"><i class="fab fa-github"></i></a>
-                        <a href="#" class="me-2"><i class="fab fa-linkedin"></i></a>
-                        <a href="#" class="me-2"><i class="fab fa-twitter"></i></a>
-                    </div>
+                    </div>                    
                 </div>
             </div>
         </div>
