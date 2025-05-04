@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jebakumar - About</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/portfolio.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+</head>
+<body data-theme="light">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top navbar-transparent navbar-light bg-light" id="main-nav">
+        <div class="container">
+            <a class="navbar-brand" href="index.html"><i class="fa fa-home"></i></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <!-- <li class="nav-item">
+                        <a class="nav-link active" href="index.html">Home</a>
+                    </li> -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="blog.html">Blog</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="lab.html">Lab</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Quick Section with Profile Image-->
+    <div class="container">
+        <div class="row align-items-center py-5">
+            <div class="col-lg-6 mb-4 mb-lg-0">
+                <div class="profile-info animate__animated animate__fadeInLeft">
+                    <h1 class="display-4 fw-bold">Jebakumar</h1>
+                    <h3 class="subtitle">Network Engineer, Software Quality Engineer & Educator</h3>
+                    <p class="lead mt-3">Passionate about creating, learning, functional networks and sharing knowledge with others.</p>
+                    <div class="mt-4 profile-buttons">
+                        <a href="assets/docs/Jebakumar_Govindaswamy_Resume.pdf" class="btn btn-primary me-2">Download CV</a>
+                        <!-- <a href="contact.html" class="btn btn-outline-primary">Hire Me</a> -->
+                    </div>
+                    <div class="social-links mt-4">
+                        <a href="#" class="social-icon"><i class="fab fa-github"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 text-center animate__animated animate__fadeInRight">
+                <div class="profile-image-container">
+                    <img src="assets/images/profile.jpg" alt="Jebakumar" class="profile-image">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <header class="book-container">
+        <div class="book" id="book">
+            <!-- Page 1 - Who Am I ?  - About Me-->
+            <div class="page" id="page-1" style="transform: rotateY(180deg); z-index: -2;">
+                <div class="page-content">
+                    <header class="hero-section">
+                        <div class="container">
+                            <div class="row align-items-center min-vh-10">
+                                <h1 class="display-4 fw-bold animate__animated animate__fadeInLeft">Who Am I</h1>
+                                <p class="lead mt-3 animate__animated animate__fadeInLeft animate__delay-1s">
+                                    Hello! Hi, I'm Jebakumar Govindaswamy. You can call me <strong>J-E-B-A</strong> or <strong>G J</strong> <br><br>
+                                    Here is a quick and little overview about me.<br><br>
+                                    I am a dedicated IT professional with over 
+                                    <a id="workexp1">
+                                        <script>
+                                            //collect input from HTML form and convert into date format (mm/dd/yyyy)
+                                            // var dob = new Date("07/11/2021");
+                                            var dob = new Date("11/29/2021");
+                                            
+                                            //extract the year, month, and date from user date input
+                                            var dobYear = dob.getYear();
+                                            var dobMonth = dob.getMonth();
+                                            var dobDate = dob.getDate();
+                                            
+                                            //get the current date from the system
+                                            var now = new Date();
+                                            //extract the year, month, and date from current date
+                                            var currentYear = now.getYear();
+                                            var currentMonth = now.getMonth();
+                                            var currentDate = now.getDate();
+                                            
+                                            //declare a variable to collect the age in year, month, and days
+                                            var age = {};
+                                            var ageString = "";
+                                            
+                                            //get years
+                                            var yearAge = currentYear - dobYear;
+                                            
+                                            //get months
+                                            if (currentMonth >= dobMonth)
+                                                //get months when current month is greater
+                                                var monthAge = currentMonth - dobMonth;
+                                            else {
+                                                yearAge--;
+                                                var monthAge = 12 + currentMonth - dobMonth;
+                                            }
+            
+                                            //get days
+                                            if (currentDate >= dobDate)
+                                                //get days when the current date is greater
+                                                var dateAge = currentDate - dobDate;
+                                            else {
+                                                monthAge--;
+                                                var dateAge = 31 + currentDate - dobDate;
+            
+                                                if (monthAge < 0) {
+                                                monthAge = 11;
+                                                yearAge--;
+                                                }
+                                            }
+                                            //group the age in a single variable
+                                            age = {
+                                            years: yearAge,
+                                            months: monthAge,
+                                            days: dateAge
+                                            };
+                                                
+                                            var ageString = age.years  + " years, " + age.months + " months, " + age.days + " days ";
+            
+                                            // //display the calculated age
+                                            // //document.write("  "+ageString);
+                                            // document.getElementById("workexp1").innerHTML = " " + ageString;		
+                                            var age1 = { years: age.years, months: age.months, days: age.days };
+                                            var age2 = { years: 2, months: 7, days: 0 };
+                                            var age3 = { years: 1, months: 3, days: 9 };
+                                            var age4 = { years: 2, months: 1, days: 13 };
+                                        
+                                            // Function to add two age objects
+                                            function addAges(ageA, ageB) {
+                                                var result = {
+                                                years: ageA.years + ageB.years,
+                                                months: ageA.months + ageB.months,
+                                                days: ageA.days + ageB.days
+                                                };
+                                        
+                                                // Adjust months and years if days exceed 30
+                                                if (result.days >= 30) {
+                                                result.months += Math.floor(result.days / 30);
+                                                result.days %= 30;
+                                                }
+                                        
+                                                // Adjust months and years if months exceed 12
+                                                if (result.months >= 12) {
+                                                result.years += Math.floor(result.months / 12);
+                                                result.months %= 12;
+                                                }
+                                        
+                                                return result;
+                                            }
+                                        
+                                            // Add the ages
+                                            var totalAge = addAges(addAges(addAges(age1, age2), age3), age4);
+                                        
+                                            // Display the result
+                                            var resultElement = document.getElementById("workexp1");
+                                            resultElement.innerHTML = totalAge.years + " years, " + totalAge.months + " months, " + totalAge.days + " days";		
+                                        </script>
+                                    </a>
+                                    of experience in the field, passionate about solving problems in simple and efficient ways. With a strong foundation in Information Technology, I completed my undergraduate degree in 2014 from 
+                                    <a href= "https://goo.gl/maps/DJWDCLqsPn9F8iCV9" target="_blank">Meenakshi College of Engineering, Chennai, Tamil Nadu.</a><br><br>
+
+                                    My career journey has been shaped by continuous learning and a genuine enthusiasm for technology. 
+                                    I enjoy staying updated with the latest advancements by reading technical journals and exploring new tools and techniques. 
+                                    I also find joy in sharing knowledge with others, whether through casual discussions or mentoring.
+                                    <br><br>
+
+                                    Currently based in <a href="https://goo.gl/maps/XTbjtpCqvn98C9sk9" target="_blank">Bangalore, Karnataka, India.</a>
+
+                                    I balance my professional life with quality time spent with my family. 
+                                    I especially cherish spontaneous outings with my son, which remind me that happiness often comes from life’s simplest moments.
+                                    I firmly believe that happiness and satisfaction grow when we keep things super simple.
+                                </p>
+                            </div>
+                        </div>
+                    </header>
+                </div>
+                <div class="page-number">Page 1</div>
+                <div class="edge edge-right" onclick="nextPage()"></div>
+                <div class="corner corner-right" onclick="nextPage()">
+                    <div class="page-corner-fold"></div>
+                </div>
+            </div>
+            
+            <!-- Page 2 My Skills -->
+            <div class="page" id="page-2" style="transform: rotateY(180deg); z-index: -1;">
+                <div class="page-content">
+                    <!-- <h2>Chapter 2: Skills</h2> -->
+                    <header class="hero-section">
+                        <div class="container">
+                            <div class="row align-items-center min-vh-10">
+                                <h1 class="display-4 fw-bold animate__animated animate__fadeInLeft">MY SKILLS</h1>
+                                <!-- Optional JavaScript -->
+                                <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+                                <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+                                integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+                                crossorigin="anonymous"></script>
+                                <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+                                integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+                                crossorigin="anonymous"></script>
+                                <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+                                integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+                                crossorigin="anonymous"></script>
+
+
+                                <!---------Skill------------------------>
+                                <!-- Excellent--------- 100 to 90
+                                Very Good--------- 89 to 75
+                                Good-------------- 74 to 60
+                                Average----------- 59 to 45 
+                                Below Average----- 44 to 35 -->
+
+                                <div class="section" id="skill">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="skill-bars">
+                                                    <div class="skill">
+                                                        <div class="skill-info">
+                                                            <span class="skill-name">Designing Networking Topology</span>
+                                                            <span class="skill-percentage">95%</span>
+                                                        </div>
+                                                        <div class="skill-bar">
+                                                            <div class="skill-progress" style="width: 95%;"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="skill">
+                                                        <div class="skill-info">
+                                                            <span class="skill-name">Switching and Routing</span>
+                                                            <span class="skill-percentage">75%</span>
+                                                        </div>
+                                                        <div class="skill-bar">
+                                                            <div class="skill-progress" style="width: 75%;"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="skill">
+                                                        <div class="skill-info">
+                                                            <span class="skill-name">L2-L3 Protocols: 802.1Q, 802.3, 802.11</span>
+                                                            <span class="skill-percentage">85%</span>
+                                                        </div>
+                                                        <div class="skill-bar">
+                                                            <div class="skill-progress" style="width: 85%;"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="skill">
+                                                        <div class="skill-info">
+                                                            <span class="skill-name">L2-L3 Protocols: MAC, ARP, 802.1x, STP</span>
+                                                            <span class="skill-percentage">95%</span>
+                                                        </div>
+                                                        <div class="skill-bar">
+                                                            <div class="skill-progress" style="width: 95%;"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="skill">
+                                                        <div class="skill-info">
+                                                            <span class="skill-name">L2-L3 Protocols:IP, ICMP, Routing - RIP, OSPF</span>
+                                                            <span class="skill-percentage">60%</span>
+                                                        </div>
+                                                        <div class="skill-bar">
+                                                            <div class="skill-progress" style="width: 60%;"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="skill">
+                                                        <div class="skill-info">
+                                                            <span class="skill-name">L4-L7 Protocols: TCP, UDP, DHCP, DNS, FTP, HTTP, SNMP</span>
+                                                            <span class="skill-percentage">80%</span>
+                                                        </div>
+                                                        <div class="skill-bar">
+                                                            <div class="skill-progress" style="width: 80%;"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="skill">
+                                                        <div class="skill-info">
+                                                            <span class="skill-name">L4-L7 Protocols: LDAP, TACACS+, Radius (EAP)</span>
+                                                            <span class="skill-percentage">70%</span>
+                                                        </div>
+                                                        <div class="skill-bar">
+                                                            <div class="skill-progress" style="width: 70%;"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="skill">
+                                                        <div class="skill-info">
+                                                            <span class="skill-name">WiFi - 802.11 Enterprise & Commercial (a/b/g/n/ac)</span>
+                                                            <span class="skill-percentage">65%</span>
+                                                        </div>
+                                                        <div class="skill-bar">
+                                                            <div class="skill-progress" style="width: 65%;"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="skill">
+                                                        <div class="skill-info">
+                                                            <span class="skill-name">Traffic Generator: IXIA Veriwave, Chariot, scapy</span>
+                                                            <span class="skill-percentage">60%</span>
+                                                        </div>
+                                                        <div class="skill-bar">
+                                                            <div class="skill-progress" style="width: 60%;"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="skill">
+                                                        <div class="skill-info">
+                                                            <span class="skill-name">Traffic Generator: iPerf, neper, Netperf</span>
+                                                            <span class="skill-percentage">85%</span>
+                                                        </div>
+                                                        <div class="skill-bar">
+                                                            <div class="skill-progress" style="width: 85%;"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="skill">
+                                                        <div class="skill-info">
+                                                            <span class="skill-name">Packet Analysis Tool: Wireshark, tcpdump</span>
+                                                            <span class="skill-percentage">50%</span>
+                                                        </div>
+                                                        <div class="skill-bar">
+                                                            <div class="skill-progress" style="width: 50%;"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="skill">
+                                                        <div class="skill-info">
+                                                            <span class="skill-name">Apps: hping, nmcli, ip, ifconfig, netsh</span>
+                                                            <span class="skill-percentage">80%</span>
+                                                        </div>
+                                                        <div class="skill-bar">
+                                                            <div class="skill-progress" style="width: 80%;"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="skill">
+                                                        <div class="skill-info">
+                                                            <span class="skill-name">Software Test life cycle: Agile Methodology</span>
+                                                            <span class="skill-percentage">80%</span>
+                                                        </div>
+                                                        <div class="skill-bar">
+                                                            <div class="skill-progress" style="width: 80%;"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="skill">
+                                                        <div class="skill-info">
+                                                            <span class="skill-name">Quality Control & Quality Analyst</span>
+                                                            <span class="skill-percentage">90%</span>
+                                                        </div>
+                                                        <div class="skill-bar">
+                                                            <div class="skill-progress" style="width: 90%;"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="skill">
+                                                        <div class="skill-info">
+                                                            <span class="skill-name">Software Testing: Functional & Non Functional</span>
+                                                            <span class="skill-percentage">85%</span>
+                                                        </div>
+                                                        <div class="skill-bar">
+                                                            <div class="skill-progress" style="width: 85%;"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="skill-bars">
+                                                    <div class="skill">
+                                                        <div class="skill-info">
+                                                            <span class="skill-name">Automation: Linux Bash Shell scripting</span>
+                                                            <span class="skill-percentage">85%</span>
+                                                        </div>
+                                                        <div class="skill-bar">
+                                                            <div class="skill-progress" style="width: 85%;"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="skill">
+                                                        <div class="skill-info">
+                                                            <span class="skill-name">Automation: BATCH & Powershell scripting</span>
+                                                            <span class="skill-percentage">70%</span>
+                                                        </div>
+                                                        <div class="skill-bar">
+                                                            <div class="skill-progress" style="width: 70%;"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="skill">
+                                                        <div class="skill-info">
+                                                            <span class="skill-name">Automation: Python - paramiko, ssl, csv, pyVim, os, subprocess, logging</span>
+                                                            <span class="skill-percentage">85%</span>
+                                                        </div>
+                                                        <div class="skill-bar">
+                                                            <div class="skill-progress" style="width: 85%;"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="skill">
+                                                        <div class="skill-info">
+                                                            <span class="skill-name">JIRA, IBM ClearQuest, ApTest, MS-Office</span>
+                                                            <span class="skill-percentage">80%</span>
+                                                        </div>
+                                                        <div class="skill-bar">
+                                                            <div class="skill-progress" style="width: 80%;"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="skill">
+                                                        <div class="skill-info">
+                                                            <span class="skill-name">Virtualization: ESX, HyperV, KVM, Proxmox, Namespace</span>
+                                                            <span class="skill-percentage">70%</span>
+                                                        </div>
+                                                        <div class="skill-bar">
+                                                            <div class="skill-progress" style="width: 70%;"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="skill">
+                                                        <div class="skill-info">
+                                                            <span class="skill-name">Networking Virtualization: SRIOV, VMDq, VMMq, ENS</span>
+                                                            <span class="skill-percentage">70%</span>
+                                                        </div>
+                                                        <div class="skill-bar">
+                                                            <div class="skill-progress" style="width: 70%;"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="skill">
+                                                        <div class="skill-info">
+                                                            <span class="skill-name">Windows Server: AD, DHCP, DNS, NPS, IIS, CA - Usage for Validation</span>
+                                                            <span class="skill-percentage">50%</span>
+                                                        </div>
+                                                        <div class="skill-bar">
+                                                            <div class="skill-progress" style="width: 50%;"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="skill">
+                                                        <div class="skill-info">
+                                                            <span class="skill-name">Intel Ethernet Product : FNIC, IPU - QA/Validation</span>
+                                                            <span class="skill-percentage">80%</span>
+                                                        </div>
+                                                        <div class="skill-bar">
+                                                            <div class="skill-progress" style="width: 80%;"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="skill">
+                                                        <div class="skill-info">
+                                                            <span class="skill-name">Nvidia Ethernet Product : ConnectX, DPU SmartNIC, DOCA - QA/Validation</span>
+                                                            <span class="skill-percentage">30%</span>
+                                                        </div>
+                                                        <div class="skill-bar">
+                                                            <div class="skill-progress" style="width: 30%;"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="skill">
+                                                        <div class="skill-info">
+                                                            <span class="skill-name">Firewall, Routers, Switches, AP - Deploy/Usage/QA/Validation</span>
+                                                            <span class="skill-percentage">55%</span>
+                                                        </div>
+                                                        <div class="skill-bar">
+                                                            <div class="skill-progress" style="width: 55%;"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="skill">
+                                                        <div class="skill-info">
+                                                            <span class="skill-name">DNS Registar, WEB HOSTING(Apache, Nginx) - Deploy/Usage</span>
+                                                            <span class="skill-percentage">80%</span>
+                                                        </div>
+                                                        <div class="skill-bar">
+                                                            <div class="skill-progress" style="width: 80%;"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="skill">
+                                                        <div class="skill-info">
+                                                            <span class="skill-name">TrueNAS, Nextcloud, Plex - Deploy/Usage</span>
+                                                            <span class="skill-percentage">60%</span>
+                                                        </div>
+                                                        <div class="skill-bar">
+                                                            <div class="skill-progress" style="width: 60%;"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="skill">
+                                                        <div class="skill-info">
+                                                            <span class="skill-name">Vulnerability tools: mdk3, airmon, aireplay - QA</span>
+                                                            <span class="skill-percentage">40%</span>
+                                                        </div>
+                                                        <div class="skill-bar">
+                                                            <div class="skill-progress" style="width: 40%;"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="skill">
+                                                        <div class="skill-info">
+                                                            <span class="skill-name">HTML, CSS, JScript - Deploy/Usage</span>
+                                                            <span class="skill-percentage">55%</span>
+                                                        </div>
+                                                        <div class="skill-bar">
+                                                            <div class="skill-progress" style="width: 55%;"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="skill">
+                                                        <div class="skill-info">
+                                                            <span class="skill-name">Usage of Artificial intelligence (AI) for Browsing, Coding & Development</span>
+                                                            <span class="skill-percentage">80%</span>
+                                                        </div>
+                                                        <div class="skill-bar">
+                                                            <div class="skill-progress" style="width: 80%;"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>                               
+                            </div>
+                        </div>
+                    </header>                
+                </div>
+                <div class="page-number">Page 2</div>
+                <div class="edge edge-left" onclick="prevPage()"></div>
+                <div class="edge edge-right" onclick="nextPage()"></div>
+                <div class="corner corner-left" onclick="prevPage()">
+                    <div class="page-corner-fold"></div>
+                </div>
+                <div class="corner corner-right" onclick="nextPage()">
+                    <div class="page-corner-fold"></div>
+                </div>
+            </div>
+            
+            <!-- Page 3 -->
+            <div class="page" id="page-3" style="transform: rotateY(180deg); z-index: -2;">
+                <div class="page-content">
+                    <h2>Chapter 3: The Discovery</h2>
+                    <p>Etiam scelerisque neque vel nisl dictum, vitae cursus mi sollicitudin. Donec accumsan malesuada diam, sit amet hendrerit urna lobortis id. Sed rhoncus est eget bibendum faucibus. Praesent gravida laoreet dui, at molestie leo tincidunt vitae.</p>
+                    <p>Nulla sollicitudin augue magna, nec fringilla erat eleifend eu. Donec sed metus leo. Nulla facilisi. Sed in diam ut dui facilisis venenatis nec non justo. Nam tincidunt leo in massa rutrum ornare. Duis ac sem vel nulla dictum suscipit.</p>
+                    <p>Quisque ullamcorper enim quis elit efficitur, vel ullamcorper justo semper. Donec maximus lacinia risus, at pulvinar sapien viverra quis. Vestibulum pellentesque risus vel purus venenatis, quis porttitor sem consequat.</p>
+                </div>
+                <div class="page-number">Page 3</div>
+                <div class="edge edge-left" onclick="prevPage()"></div>
+                <div class="edge edge-right" onclick="nextPage()"></div>
+                <div class="corner corner-left" onclick="prevPage()">
+                    <div class="page-corner-fold"></div>
+                </div>
+                <div class="corner corner-right" onclick="nextPage()">
+                    <div class="page-corner-fold"></div>
+                </div>
+            </div>
+            
+            <!-- Page 4 -->
+            <div class="page" id="page-4" style="transform: rotateY(180deg); z-index: -3;">
+                <div class="page-content">
+                    <h2>PICS</h2>
+                    <header class="hero-section">
+                        <div class="container">
+                            <div class="row align-items-center min-vh-100">
+                                <div class="col-lg-6">
+                                    <h1 class="display-4 fw-bold animate__animated animate__fadeInLeft">About Me</h1>
+                                    <p class="lead mt-3 animate__animated animate__fadeInLeft animate__delay-1s">Basics of networking and its Reference</p>
+                                    <div class="mt-4 animate__animated animate__fadeInLeft animate__delay-2s">
+                                        <a href="01_Networking.html" class="btn btn-primary me-2">Chapter1-Basics of Networking
+                                        <a href="contact.html" class="btn btn-outline-primary">Contact Me</a>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 animate__animated animate__fadeInRight">
+                                    <!-- Image Slideshow -->
+                                    <div class="slideshow-container">
+                                        <div class="slideshow-slide active">
+                                            <img src="assets/images/slide1.jpg" alt="Slide 1" class="img-fluid rounded shadow">
+                                        </div>
+                                        <div class="slideshow-slide">
+                                            <img src="assets/images/slide2.jpg" alt="Slide 2" class="img-fluid rounded shadow">
+                                        </div>
+                                        <div class="slideshow-slide">
+                                            <img src="assets/images/slide3.jpg" alt="Slide 3" class="img-fluid rounded shadow">
+                                        </div>
+                                        <button class="slideshow-prev">&lt;</button>
+                                        <button class="slideshow-next">&gt;</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </header>
+                </div>
+                <div class="page-number">Page 4</div>
+                <div class="edge edge-left" onclick="prevPage()"></div>
+                <div class="corner corner-left" onclick="prevPage()">
+                    <div class="page-corner-fold"></div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- About Me Section -->
+    <section class="about-section py-5">
+        <div class="container">
+            <h2 class="section-title text-center mb-5">About Me</h2>
+            <div class="row">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <h3 class="mb-3">Who Am I?</h3>
+                    <p>I am a passionate web developer with a strong background in frontend and backend technologies. With over 5 years of experience in the industry, I specialize in creating responsive, user-friendly websites and applications.</p>
+                    <p>My journey began with a degree in Computer Science, followed by specialized training in web development. I've worked with various clients across different industries, helping them establish their online presence and achieve their digital goals.</p>
+                    <p>When I'm not coding, I enjoy sharing my knowledge through tutorials, blog posts, and workshops. I believe in the power of education and strive to make technical concepts accessible to everyone.</p>
+                </div>
+                <div class="col-lg-6">
+                    <h3 class="mb-3">My Skills</h3>
+                    <div class="skill-bars">
+                        <div class="skill">
+                            <div class="skill-info">
+                                <span class="skill-name">HTML/CSS</span>
+                                <span class="skill-percentage">95%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 95%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill">
+                            <div class="skill-info">
+                                <span class="skill-name">JavaScript</span>
+                                <span class="skill-percentage">90%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 90%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill">
+                            <div class="skill-info">
+                                <span class="skill-name">React</span>
+                                <span class="skill-percentage">85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 85%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill">
+                            <div class="skill-info">
+                                <span class="skill-name">Node.js</span>
+                                <span class="skill-percentage">80%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 80%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill">
+                            <div class="skill-info">
+                                <span class="skill-name">UI/UX Design</span>
+                                <span class="skill-percentage">75%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 75%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience & Education Section -->
+    <section class="experience-section py-5">
+        <div class="container">
+            <h2 class="section-title text-center mb-5">Experience & Education</h2>            
+            <div class="row">
+                <!-- Experience Column -->
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <h3 class="mb-4">Work Experience</h3>
+                    
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <h4>Senior Web Developer</h4>
+                                <h5>ABC Company</h5>
+                                <p class="timeline-date">2023 - Present</p>
+                                <p>Leading frontend development team, implementing modern web technologies, and optimizing website performance.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <h4>Web Developer</h4>
+                                <h5>XYZ Agency</h5>
+                                <p class="timeline-date">2020 - 2023</p>
+                                <p>Developed responsive websites, collaborated with design team, and maintained client websites.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <h4>Junior Developer</h4>
+                                <h5>Web Solutions Inc.</h5>
+                                <p class="timeline-date">2018 - 2020</p>
+                                <p>Assisted in web development projects, fixed bugs, and learned various web technologies.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Education Column -->
+                <div class="col-lg-6">
+                    <h3 class="mb-4">Education</h3>
+                    
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <h4>Master's in Computer Science</h4>
+                                <h5>University Name</h5>
+                                <p class="timeline-date">2016 - 2018</p>
+                                <p>Specialized in web technologies and software engineering with a focus on scalable applications.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <h4>Bachelor's in Computer Science</h4>
+                                <h5>University Name</h5>
+                                <p class="timeline-date">2012 - 2016</p>
+                                <p>Studied computer science fundamentals, programming languages, and software development methodologies.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <h4>Web Development Certification</h4>
+                                <h5>Online Academy</h5>
+                                <p class="timeline-date">2015</p>
+                                <p>Comprehensive training in modern web development technologies and best practices.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="portfolio-section py-5">
+        <div class="container">
+            <h2 class="section-title text-center mb-5">My Portfolio</h2>
+            
+            <div class="portfolio-filter text-center mb-4">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="web">Web Design</button>
+                <button class="filter-btn" data-filter="app">App Development</button>
+                <button class="filter-btn" data-filter="graphic">Graphic Design</button>
+            </div>
+            
+            <div class="row g-4 portfolio-items">
+                <!-- Portfolio Item 1 -->
+                <div class="col-md-6 col-lg-4 portfolio-item web">
+                    <div class="portfolio-content">
+                        <img src="assets/images/portfolio1.jpg" alt="E-commerce Website" class="img-fluid">
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-info">
+                                <h4>E-commerce Website</h4>
+                                <p>Web Design</p>
+                                <a href="#" class="portfolio-link"><i class="fas fa-link"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Portfolio Item 2 -->
+                <div class="col-md-6 col-lg-4 portfolio-item app">
+                    <div class="portfolio-content">
+                        <img src="assets/images/portfolio2.jpg" alt="Task Manager App" class="img-fluid">
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-info">
+                                <h4>Task Manager App</h4>
+                                <p>App Development</p>
+                                <a href="#" class="portfolio-link"><i class="fas fa-link"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Portfolio Item 3 -->
+                <div class="col-md-6 col-lg-4 portfolio-item graphic">
+                    <div class="portfolio-content">
+                        <img src="assets/images/portfolio3.jpg" alt="Brand Identity" class="img-fluid">
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-info">
+                                <h4>Brand Identity</h4>
+                                <p>Graphic Design</p>
+                                <a href="#" class="portfolio-link"><i class="fas fa-link"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Portfolio Item 4 -->
+                <div class="col-md-6 col-lg-4 portfolio-item web">
+                    <div class="portfolio-content">
+                        <img src="assets/images/portfolio4.jpg" alt="Educational Platform" class="img-fluid">
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-info">
+                                <h4>Educational Platform</h4>
+                                <p>Web Design</p>
+                                <a href="#" class="portfolio-link"><i class="fas fa-link"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Portfolio Item 5 -->
+                <div class="col-md-6 col-lg-4 portfolio-item app">
+                    <div class="portfolio-content">
+                        <img src="assets/images/portfolio5.jpg" alt="Fitness App" class="img-fluid">
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-info">
+                                <h4>Fitness App</h4>
+                                <p>App Development</p>
+                                <a href="#" class="portfolio-link"><i class="fas fa-link"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Portfolio Item 6 -->
+                <div class="col-md-6 col-lg-4 portfolio-item graphic">
+                    <div class="portfolio-content">
+                        <img src="assets/images/portfolio6.jpg" alt="Poster Design" class="img-fluid">
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-info">
+                                <h4>Poster Design</h4>
+                                <p>Graphic Design</p>
+                                <a href="#" class="portfolio-link"><i class="fas fa-link"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer mt-auto py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 text-md-start">
+                    <p class="text-start">&copy; JKC 2025.<br>All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <!-- Dark/Light Mode Toggle -->
+                    <div class="theme-switch-wrapper position-fixed" style="bottom: 60px; right: 10px; z-index: 1000;">
+                        <label class="theme-switch" for="checkbox">
+                            <input type="checkbox" id="checkbox" />
+                            <div class="slider round"></div>
+                        </label>
+                    </div>                    
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <!-- Custom JavaScript -->
+    <script src="js/slider.js"></script>
+    <script src="js/dark-mode.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/portfolio.js"></script>
+</body>
+</html>
