@@ -234,7 +234,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   let currentPage = 1;
-  const totalPages = 4;
+  const totalPages = 6;
   
   function updatePageVisibility() {
       for (let i = 1; i <= totalPages; i++) {

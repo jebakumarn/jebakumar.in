@@ -64,15 +64,15 @@
   
   /* Hero Section */
   .hero-section {
-    min-height: 85vh;
+    min-height: 1vh;
     display: flex;
     align-items: center;
     background: linear-gradient(135deg, rgba(78, 115, 223, 0.05) 0%, rgba(78, 115, 223, 0.1) 100%);
-    padding: 4rem 0;
+    padding: 1rem 0;
   }
   
   header.portfolio-hero {
-    height: 40vh;
+    height: 33vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -302,21 +302,40 @@
 /* Hero Section */
 .portfolio-hero {
     background-color: var(--background-color);
-    padding: 80px 0;
+    padding: 3rem;
   }
   
   .profile-image-container {
     position: relative;
-    max-width: 350px;
+    max-width: 300px;
     margin: 0 auto;
   }
   
   .profile-image {
     width: 100%;
     height: auto;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border-radius: 100%;
+    background-color: white;
+    box-shadow: 30px 30px 30px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
+  }
+
+  @media (max-width: 320px) {
+    .profile-image {
+      width: 20px;
+    }
+  }
+
+  @media (min-width: 321px) and (max-width: 999px) {
+    .profile-image {
+      width: 150px;
+    }
+  }
+
+  @media (min-width: 1000px) {
+    .profile-image {
+      width: 300px;
+    }
   }
   
   .social-icon {
@@ -719,21 +738,21 @@
     justify-content: center;
     align-items: center;
     perspective: 1500px;
-    padding: 2rem;
+    padding: 0rem;
 }
 
 .book {
     width: 100%;
     max-width: 100vh;
-    height: 90vh;
+    height: 75vh;
     position: relative;
     transform-style: preserve-3d;
-    margin-top: 3%;
+    margin-top: 0%;
 }
 .page {
   position: absolute;
   width: 100%;
-  height: 100%;
+  height: 80%;
   top: 0;
   left: 0;
   background-color: var(--card-bg);
@@ -744,10 +763,9 @@
   backface-visibility: hidden;
   display: flex;
   flex-direction: column;
-  padding: 2rem;
-  border-radius: 15px;
-  overflow: hidden;
-  
+  padding: 3rem;
+  border-radius: 10px;
+  overflow: hidden;  
 }
 
 .page-content {
