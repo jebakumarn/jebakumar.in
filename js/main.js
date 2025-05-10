@@ -166,11 +166,11 @@ document.addEventListener('DOMContentLoaded', () => {
   });
   
   // Portfolio Page JavaScript
-document.addEventListener('DOMContentLoaded', () => {
+  document.addEventListener('DOMContentLoaded', () => {
     // Initialize Portfolio Filter
     const filterButtons = document.querySelectorAll('.filter-btn');
     const portfolioItems = document.querySelectorAll('.portfolio-item');
-  
+
     // Filter portfolio items based on category
     function filterPortfolio(category) {
       portfolioItems.forEach(item => {
@@ -189,7 +189,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       });
     }
-  
+
     // Add click event listeners to filter buttons
     filterButtons.forEach(button => {
       button.addEventListener('click', () => {
@@ -203,18 +203,18 @@ document.addEventListener('DOMContentLoaded', () => {
         filterPortfolio(category);
       });
     });
-  
+
     // Animate skill bars on scroll
     const skillSection = document.querySelector('.about-section');
     const skillBars = document.querySelectorAll('.skill-progress');
     let animated = false;
-  
+
     function animateSkills() {
       if (animated) return;
-      
+
       const sectionPos = skillSection.getBoundingClientRect().top;
       const screenPos = window.innerHeight / 1.3;
-      
+
       if (sectionPos < screenPos) {
         skillBars.forEach(bar => {
           const width = bar.style.width;
@@ -226,68 +226,70 @@ document.addEventListener('DOMContentLoaded', () => {
         animated = true;
       }
     }
-  
+
     // Check on scroll
     window.addEventListener('scroll', animateSkills);
     // Check on load
     animateSkills();
   });
 
-  let currentPage = 1;
+  let currentPage = parseInt(localStorage.getItem('currentPage')) || 1;
   const totalPages = 6;
-  
+
   function updatePageVisibility() {
-      for (let i = 1; i <= totalPages; i++) {
-          const page = document.getElementById(`page-${i}`);
-          
-          if (i < currentPage) {
-              // Pages before current page
-              page.style.transform = 'rotateY(-180deg)';
-              page.style.zIndex = -i;
-          } else if (i === currentPage) {
-              // Current page
-              page.style.transform = 'rotateY(0deg)';
-              page.style.zIndex = totalPages - i + 1;
-          } else {
-              // Pages after current page
-              page.style.transform = 'rotateY(180deg)';
-              page.style.zIndex = -i;
-          }
+    for (let i = 1; i <= totalPages; i++) {
+      const page = document.getElementById(`page-${i}`);
+
+      if (i < currentPage) {
+        // Pages before current page
+        page.style.transform = 'rotateY(-180deg)';
+        page.style.zIndex = -i;
+      } else if (i === currentPage) {
+        // Current page
+        page.style.transform = 'rotateY(0deg)';
+        page.style.zIndex = totalPages - i + 1;
+      } else {
+        // Pages after current page
+        page.style.transform = 'rotateY(180deg)';
+        page.style.zIndex = -i;
       }
+    }
   }
-  
+
   function nextPage() {
-      if (currentPage < totalPages) {
-          const currentPageElement = document.getElementById(`page-${currentPage}`);
-          
-          // Add turning animation
-          currentPageElement.classList.add('page-turning');
-          
-          // After animation finishes
-          setTimeout(() => {
-              currentPage++;
-              updatePageVisibility();
-          }, 300);
-      }
+    if (currentPage < totalPages) {
+      const currentPageElement = document.getElementById(`page-${currentPage}`);
+
+      // Add turning animation
+      currentPageElement.classList.add('page-turning');
+
+      // After animation finishes
+      setTimeout(() => {
+        currentPage++;
+        localStorage.setItem('currentPage', currentPage); // Save current page to localStorage
+        updatePageVisibility();
+      }, 300);
+    }
   }
-  
+
   function prevPage() {
-      if (currentPage > 1) {
-          currentPage--;
-          updatePageVisibility();
-          
-          const prevPageElement = document.getElementById(`page-${currentPage}`);
-          
-          // Reset the animation class first
-          prevPageElement.classList.remove('page-turning');
-          
-          // Force reflow so the animation works again
-          void prevPageElement.offsetWidth;
-          
-          // Animation starts from -180deg (turned) to 0deg (flat)
-          prevPageElement.style.transform = 'rotateY(0deg)';
-      }
+    if (currentPage > 1) {
+      currentPage--;
+      localStorage.setItem('currentPage', currentPage); // Save current page to localStorage
+      updatePageVisibility();
+
+      const prevPageElement = document.getElementById(`page-${currentPage}`);
+
+      // Reset the animation class first
+      prevPageElement.classList.remove('page-turning');
+
+      // Force reflow so the animation works again
+      void prevPageElement.offsetWidth;
+
+      // Animation starts from -180deg (turned) to 0deg (flat)
+      prevPageElement.style.transform = 'rotateY(0deg)';
+    }
   }
-  
+
   // Initialize
   updatePageVisibility();
