@@ -55,7 +55,7 @@
                 <div class="col-lg-6">
                     <div class="profile-info animate__animated animate__fadeInLeft">
                         <h2 class="display-4 fw-bold">Jebakumar</h2>
-                        <h4 class="subtitle">Network Engineer, Software Quality Engineer & Educator</h4>
+                        <h4 class="subtitle">MTS Software System Design Engineer @ AMD | EX-Intel, EX-SonicWall | Ethernet & Wireless Networking | Building Scalable Data Center Systems | Educator</h4>
                         <div class="profile-buttons mt-3">
                             <a href="assets/docs/Jebakumar_Govindaswamy_Resume.pdf" class="btn btn-primary me-2">Download Resume</a>
                             <!-- <a href="contact.html" class="btn btn-outline-primary">Hire Me</a> -->
@@ -93,7 +93,7 @@
                                     <h1 class="display-8 text-center fw-bold-italic animate__animated animate__fadeInLeft">About Me</h1> 
                                 </div>
                                 <p class="lead mt-3 animate__animated animate__fadeInLeft animate__delay-1s">
-                                    Hello! Hi, I'm Jebakumar Govindaswamy. feel free to call me <strong>JEBA</strong> or <strong>G J</strong> <br><br>
+                                    Hello! Hi, I'm Jebakumar Govindaswamy. feel free to call me <strong>JEBA</strong> <br><br>
                                     Here is a quick and little overview about me.<br><br>
                                     I am a dedicated IT professional with over 
                                     <a id="workexp1">
@@ -609,20 +609,20 @@
                                                 </script></a>
                                                 <br><br>
 
-                                                <!-- Intel -->
+                                                <!-- AMD -->
                                                 <div class="timeline-item">
                                                     <div class="timeline-dot"></div>
                                                     <div class="timeline-content">
-                                                        <h4>Driver Validation Engineer</h4>
+                                                        <h4>MTS Software System Design Engineer</h4>
                                                         <h5>
-                                                            <a href="https://www.intel.com/" target="_blank" style="text-decoration: none; color: inherit; font-weight: bold;">Intel Technology India Pvt. Ltd.</a> - 
-                                                            <a href="https://maps.app.goo.gl/K34qinPj3fKR2HQz5" target="_blank" style="text-decoration: none; color: inherit; font-style: italic;">Bengaluru, Karnataka, India - 560103</a>
+                                                            <a href="https://www.amd.com/" target="_blank" style="text-decoration: none; color: inherit; font-weight: bold;">AMD India Private Limited</a> - 
+                                                            <a href="https://maps.app.goo.gl/CnQpBz47n9jpw7GN8" target="_blank" style="text-decoration: none; color: inherit; font-style: italic;">Bengaluru, Karnataka, India - 560001</a>
                                                         </h5>
                                                         (
-                                                        <a id="Intelworkexp"></a>
+                                                        <a id="AMDworkexp"></a>
                                                         <script>
                                                             //collect input from HTML form and convert into date format (mm/dd/yyyy)
-                                                            var dob = new Date("11/29/2021");
+                                                            var dob = new Date("05/04/2026");
                                                             
                                                             //extract the year, month, and date from user date input
                                                             var dobYear = dob.getYear();
@@ -676,10 +676,60 @@
 
                                                             //display the calculated age
                                                             //document.write("  "+ageString);
-                                                            document.getElementById("Intelworkexp").innerHTML = " " + ageString;				
+                                                            document.getElementById("AMDworkexp").innerHTML = " " + ageString;				
                                                         </script>
                                                         )
-                                                        <p class="timeline-date" style="text-decoration: none; color: inherit; font-weight: bold;">29 SEP 2021 - Present</p>
+                                                        <p class="timeline-date" style="text-decoration: none; color: inherit; font-weight: bold;">04 MAY 2026 - Present</p>
+                                                        <p>
+                                                            <ul style="text-align:center; text-align:justify;text-justify: inter-word;">
+                                                                <li style="text-align:center; text-align:justify;text-justify: inter-word;"></li>
+                                                                <li style="text-align:center; text-align:justify;text-justify: inter-word;"></li>                                                                
+                                                                <li style="text-align:center; text-align:justify;text-justify: inter-word;"></li>                                                                
+                                                            </ul>
+                                                        </p>
+                                                    </div>
+                                                </div>
+
+                                                <!-- Intel -->
+                                                <div class="timeline-item">
+                                                    <div class="timeline-dot"></div>
+                                                    <div class="timeline-content">
+                                                        <h4>Driver Validation Engineer</h4>
+                                                        <h5>
+                                                            <a href="https://www.intel.com/" target="_blank" style="text-decoration: none; color: inherit; font-weight: bold;">Intel Technology India Private Limited</a> - 
+                                                            <a href="https://maps.app.goo.gl/K34qinPj3fKR2HQz5" target="_blank" style="text-decoration: none; color: inherit; font-style: italic;">Bengaluru, Karnataka, India - 560103</a>
+                                                        </h5>
+                                                        (
+                                                            <a id="Intelworkexp"></a>
+                                                            <script>
+                                                                // Collect input from HTML form and convert into date format (mm/dd/yyyy)
+                                                                var startDate = new Date("11/29/2021"); // Replace with your start date
+                                                                var endDate = new Date("04/30/2026");   // Replace with your end date
+                                    
+                                                                // Calculate the difference in milliseconds between the two dates
+                                                                var dateDifference = endDate - startDate;
+                                    
+                                                                // Calculate years, months, and days
+                                                                var yearsDifference = endDate.getFullYear() - startDate.getFullYear();
+                                                                var monthsDifference = endDate.getMonth() - startDate.getMonth();
+                                                                var daysDifference = endDate.getDate() - startDate.getDate();
+                                    
+                                                                // Adjust for negative values
+                                                                if (daysDifference < 0) {
+                                                                    monthsDifference--;
+                                                                    daysDifference += new Date(endDate.getFullYear(), endDate.getMonth(), 0).getDate();
+                                                                }
+                                                                if (monthsDifference < 0) {
+                                                                    yearsDifference--;
+                                                                    monthsDifference += 12;
+                                                                }
+                                    
+                                                                // Display the calculated age
+                                                                var ageString = yearsDifference + " years, " + monthsDifference + " months, " + daysDifference + " days";
+                                                                document.getElementById("Intelworkexp").innerHTML = " " + ageString;
+                                                            </script>
+                                                        )
+                                                        <p class="timeline-date" style="text-decoration: none; color: inherit; font-weight: bold;">29 NOV 2021 - 30 APR 2026</p>
                                                         <p>
                                                             <ul style="text-align:center; text-align:justify;text-justify: inter-word;">
                                                                 <li style="text-align:center; text-align:justify;text-justify: inter-word;">Performed and Led LAN throughput, IPForwarding, PacketPerSecond, FrameLoss and latency performance validation on Intel Ethernet 700, 700, E2100 Series network adapters across enterprise and virtualization environments.</li>
@@ -750,7 +800,7 @@
                                                                 document.getElementById("Sonicwallworkexp").innerHTML = " " + ageString;
                                                             </script>
                                                         )
-                                                        <p class="timeline-date" style="text-decoration: none; color: inherit; font-weight: bold;">22 APR 2019 - 22 SEP 2021</p>
+                                                        <p class="timeline-date" style="text-decoration: none; color: inherit; font-weight: bold;">22 APR 2019 - 22 NOV 2021</p>
                                                         <p>
                                                             <ul style="text-align:center; text-align:justify;text-justify: inter-word;">
                                                                 <li style="text-align:center; text-align:justify;text-justify: inter-word;">Designed efficient test topology and bringing up Test environment as per test requirement using multiple firewalls, switches, and access points.</li>
