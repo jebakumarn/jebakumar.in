@@ -41,8 +41,8 @@ const contactCards = [
               <label for="message">message</label>
               <textarea class="textarea" id="message" name="message" placeholder="your message..." required></textarea>
             </div>
-            <!-- Honeypot: hidden from humans; bots that tick it are silently dropped. -->
-            <input type="checkbox" name="botcheck" id="botcheck" class="hidden" tabindex="-1" autocomplete="off" />
+            <!-- Honeypot: hidden from humans; bots that fill it are silently dropped. -->
+            <input type="text" name="_honey" id="_honey" class="hidden" tabindex="-1" autocomplete="off" />
             <button class="btn" type="submit">[ send ]</button>
           </form>
         </TerminalWindow>

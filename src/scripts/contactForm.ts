@@ -1,18 +1,21 @@
 // Contact form handler.
 //
-// Primary path: POST the submission to Web3Forms (https://web3forms.com) — a
-// free, no-backend form-to-email relay — which emails it to the address the
-// access key below is registered to (jebakumarn@gmail.com). A local copy is also
-// kept in localStorage['contact_messages'] as a best-effort backup.
+// Primary path: POST the submission to FormSubmit.co (https://formsubmit.co) — a
+// free, no-signup form-to-email relay — which emails it to the destination below
+// and CCs the sender (the email they typed) so they get a copy too. A local copy
+// is also kept in localStorage['contact_messages'] as a best-effort backup.
 // All lookups are null-guarded so the script is inert on pages without the form.
+//
+// ONE-TIME ACTIVATION: the very first submission makes FormSubmit send a
+// "Confirm your email" message to the destination inbox — click that link once
+// and every submission after it is delivered automatically.
 
 // ── CONFIG ───────────────────────────────────────────────────────────────────
-// Get a FREE access key at https://web3forms.com — enter jebakumarn@gmail.com and
-// the key is emailed to you; paste it here. Submissions are then delivered to
-// that inbox. The key is safe to expose publicly: it can only send to the one
-// registered email address.
-const WEB3FORMS_ACCESS_KEY = 'YOUR_ACCESS_KEY_HERE';
-const WEB3FORMS_ENDPOINT = 'https://api.web3forms.com/submit';
+// Destination inbox. FormSubmit's AJAX endpoint is /ajax/<email>. For privacy
+// (so the raw address isn't in the page source), after the one-time activation
+// you can replace the email here with the random alias FormSubmit assigns you,
+// e.g. 'https://formsubmit.co/ajax/abcdef0123456789...'.
+const FORMSUBMIT_ENDPOINT = 'https://formsubmit.co/ajax/jebakumarn@gmail.com';
 // ─────────────────────────────────────────────────────────────────────────────
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -68,9 +71,9 @@ document.addEventListener('DOMContentLoaded', () => {
       /* storage unavailable — ignore */
     }
 
-    // Honeypot: a real user never sees/ticks this. If ticked, drop silently.
-    const botField = document.getElementById('botcheck') as HTMLInputElement | null;
-    if (botField?.checked) {
+    // Honeypot: a real user never sees/fills this. If filled, drop silently.
+    const honey = document.getElementById('_honey') as HTMLInputElement | null;
+    if (honey?.value) {
       success?.classList.remove('hidden');
       form.reset();
       return;
@@ -83,26 +86,24 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     try {
-      if (!WEB3FORMS_ACCESS_KEY || WEB3FORMS_ACCESS_KEY === 'YOUR_ACCESS_KEY_HERE') {
-        throw new Error('Email relay not configured');
-      }
-      const res = await fetch(WEB3FORMS_ENDPOINT, {
+      const res = await fetch(FORMSUBMIT_ENDPOINT, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
         body: JSON.stringify({
-          access_key: WEB3FORMS_ACCESS_KEY,
-          subject: `Portfolio contact: ${subject}`,
-          from_name: name,
-          replyto: email,
           name,
-          email,
+          email, // FormSubmit uses this as the Reply-To
+          subject,
           message,
+          _cc: email, // CC the sender so they get a copy
+          _subject: `Portfolio contact: ${subject}`,
+          _template: 'table',
+          _captcha: 'false', // required for AJAX to return JSON
         }),
       });
-      const data = await res.json().catch(() => ({}));
-      if (!res.ok || !data.success) {
-        throw new Error(data.message || `HTTP ${res.status}`);
-      }
+      const data = await res.json().catch(() => ({}) as Record<string, unknown>);
+      const ok =
+        res.ok && String((data as { success?: unknown }).success).toLowerCase() !== 'false';
+      if (!ok) throw new Error(`HTTP ${res.status}`);
 
       success?.classList.remove('hidden');
       form.reset();
