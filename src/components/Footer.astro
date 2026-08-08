@@ -1,0 +1,18 @@
+---
+import { profile } from '../data/profile';
+const year = new Date().getFullYear();
+---
+<footer class="footer">
+  <div class="container footer-inner">
+    <span>
+      <span class="dim">$</span> echo "© {year} {profile.name}"
+    </span>
+    <div class="footer-socials">
+      {profile.socials.map((s) => (
+        <a href={s.href} target="_blank" rel="noopener" aria-label={s.label} title={s.label}>
+          <i class={s.icon}></i>
+        </a>
+      ))}
+    </div>
+  </div>
+</footer>

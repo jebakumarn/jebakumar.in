@@ -1,0 +1,93 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import TerminalWindow from '../components/TerminalWindow.astro';
+---
+<BaseLayout title="Jebakumar — Lab">
+  <section class="section">
+    <div class="container narrow">
+      <p class="section-label">restricted_area</p>
+      <h1 class="section-title mono">./lab --login<span class="cursor" aria-hidden="true"></span></h1>
+      <p class="dim" style="margin-bottom:1.5rem">
+        Demo auth — credentials are stored locally in your browser only (no server).
+        The full Lab lives at
+        <a href="https://lab.jebakumar.in/" target="_blank" rel="noopener">lab.jebakumar.in</a>.
+      </p>
+
+      <TerminalWindow path="~/lab/auth">
+        <!-- Login -->
+        <div id="login-section">
+          <p class="prompt mono">login</p>
+          <div id="login-error" class="alert alert-error hidden"></div>
+          <form id="login-form" novalidate>
+            <div class="field">
+              <label for="username">username</label>
+              <input class="input" type="text" id="username" placeholder="username" required />
+            </div>
+            <div class="field">
+              <label for="password">password</label>
+              <input class="input" type="password" id="password" placeholder="••••••••" required />
+            </div>
+            <button class="btn" type="submit">[ login ]</button>
+            <p class="switch-line mono dim">
+              no account? <a href="#" id="register-link">register →</a>
+            </p>
+          </form>
+        </div>
+
+        <!-- Register -->
+        <div id="register-section" class="hidden">
+          <p class="prompt mono">register</p>
+          <div id="register-error" class="alert alert-error hidden"></div>
+          <form id="register-form" novalidate>
+            <div class="field">
+              <label for="reg-username">username</label>
+              <input class="input" type="text" id="reg-username" placeholder="username" required />
+            </div>
+            <div class="field">
+              <label for="reg-email">email</label>
+              <input class="input" type="email" id="reg-email" placeholder="you@example.com" required />
+            </div>
+            <div class="field">
+              <label for="reg-password">password</label>
+              <input class="input" type="password" id="reg-password" placeholder="••••••••" required />
+            </div>
+            <div class="field">
+              <label for="reg-confirm-password">confirm password</label>
+              <input class="input" type="password" id="reg-confirm-password" placeholder="••••••••" required />
+            </div>
+            <button class="btn" type="submit">[ create_account ]</button>
+            <p class="switch-line mono dim">
+              have an account? <a href="#" id="login-link">← login</a>
+            </p>
+          </form>
+        </div>
+
+        <!-- Authenticated content -->
+        <div id="lab-content" class="hidden">
+          <p class="prompt mono">whoami</p>
+          <p class="mono">
+            <span class="green">●</span> logged in as <span class="amber" id="lab-user">user</span>
+          </p>
+          <div class="ascii-rule"></div>
+          <p>Welcome to the Lab sandbox. Interactive experiments are hosted at
+            <a href="https://lab.jebakumar.in/" target="_blank" rel="noopener">lab.jebakumar.in</a>.</p>
+          <button class="btn btn-ghost" id="logout-btn" type="button">[ logout ]</button>
+        </div>
+      </TerminalWindow>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .narrow {
+    max-width: 560px;
+  }
+  .switch-line {
+    margin: 1rem 0 0;
+    font-size: 0.82rem;
+  }
+</style>
+
+<script>
+  import '../scripts/labAuth.ts';
+</script>

@@ -1,0 +1,326 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import TerminalWindow from '../components/TerminalWindow.astro';
+import { profile } from '../data/profile';
+import { experience } from '../data/experience';
+import { certifications } from '../data/certifications';
+import { education } from '../data/education';
+import { skills } from '../data/skills';
+import { projects } from '../data/projects';
+import { totalExperience, formatRange, formatTenure } from '../lib/duration';
+
+const years = totalExperience(experience);
+const bio = profile.bio.map((p) => p.replaceAll('{{EXPERIENCE}}', years));
+
+const tabs = [
+  { id: 'about', label: 'about.md' },
+  { id: 'experience', label: 'experience.log' },
+  { id: 'certs', label: 'certs.json' },
+  { id: 'education', label: 'education.txt' },
+  { id: 'skills', label: 'skills.cfg' },
+  { id: 'projects', label: 'projects/' },
+];
+
+// Two-column split for skills.
+const mid = Math.ceil(skills.length / 2);
+const skillsCols = [skills.slice(0, mid), skills.slice(mid)];
+---
+<BaseLayout title="Jebakumar — About">
+  <section class="section">
+    <div class="container">
+      <!-- Profile header -->
+      <div class="about-head">
+        <img class="about-avatar" src={profile.image} alt={profile.name} />
+        <div>
+          <h1 class="mono about-name">{profile.name}</h1>
+          <p class="dim about-sub">{profile.subtitle}</p>
+          <div class="about-actions">
+            <a class="btn" href={profile.resume} target="_blank" rel="noopener">[ download_resume ]</a>
+          </div>
+          <div class="about-socials">
+            {profile.socials.map((s) => (
+              <a href={s.href} target="_blank" rel="noopener" aria-label={s.label} title={s.label}>
+                <i class={s.icon}></i>
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <!-- Tabbed terminal -->
+      <div class="tabs" role="tablist" aria-label="About sections">
+        {tabs.map((t, i) => (
+          <button
+            class:list={['tab', { active: i === 0 }]}
+            role="tab"
+            id={`tab-${t.id}`}
+            aria-controls={`panel-${t.id}`}
+            aria-selected={i === 0 ? 'true' : 'false'}
+            data-tab={t.id}
+          >
+            {t.label}
+          </button>
+        ))}
+      </div>
+
+      <TerminalWindow path="~/jeba/about" class="about-term">
+        <!-- about.md -->
+        <div class="panel active" id="panel-about" role="tabpanel" aria-labelledby="tab-about">
+          <p class="prompt mono">cat about.md</p>
+          <div class="bio">
+            {bio.map((p) => <p>{p}</p>)}
+          </div>
+        </div>
+
+        <!-- experience.log -->
+        <div class="panel" id="panel-experience" role="tabpanel" aria-labelledby="tab-experience" hidden>
+          <p class="prompt mono">tail -f experience.log</p>
+          <div class="timeline">
+            {experience.map((job) => (
+              <div class="tl-item">
+                <h3 class="tl-title">{job.title}</h3>
+                <p class="tl-meta">
+                  {job.companyUrl ? (
+                    <a href={job.companyUrl} target="_blank" rel="noopener">{job.company}</a>
+                  ) : (
+                    job.company
+                  )}
+                  {' · '}{formatRange(job.start, job.end)}
+                  {' · '}<span class="amber">{formatTenure(job.start, job.end)}</span>
+                  {job.location && <><br /><span class="dim">{job.location}</span></>}
+                </p>
+                <ul class="tl-bullets">
+                  {job.bullets.map((b) => <li>{b}</li>)}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- certs.json -->
+        <div class="panel" id="panel-certs" role="tabpanel" aria-labelledby="tab-certs" hidden>
+          <p class="prompt mono">cat certs.json <span class="dim">// {certifications.length} entries</span></p>
+          <ul class="cert-list">
+            {certifications.map((c) => (
+              <li class="cert">
+                <div class="cert-main">
+                  <span class="amber cert-mark">✔</span>
+                  <span class="cert-name">{c.name}</span>
+                </div>
+                <div class="cert-meta dim mono">
+                  {c.issuer && (
+                    c.issuerUrl ? <a href={c.issuerUrl} target="_blank" rel="noopener">{c.issuer}</a> : <span>{c.issuer}</span>
+                  )}
+                  {c.date && <span> · {c.date}</span>}
+                  {c.credentialUrl && (
+                    <> · <a href={c.credentialUrl} target="_blank" rel="noopener">credential ↗</a></>
+                  )}
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <!-- education.txt -->
+        <div class="panel" id="panel-education" role="tabpanel" aria-labelledby="tab-education" hidden>
+          <p class="prompt mono">cat education.txt</p>
+          <div class="timeline">
+            {education.map((e) => (
+              <div class="tl-item">
+                <h3 class="tl-title">{e.degree}</h3>
+                <p class="tl-meta">
+                  {e.institution}
+                  {(e.start || e.end) && <> · {e.start}{e.end ? `–${e.end}` : ''}</>}
+                  {e.details && <> · <span class="amber">{e.details}</span></>}
+                  {e.location && <><br /><span class="dim">{e.location}</span></>}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- skills.cfg -->
+        <div class="panel" id="panel-skills" role="tabpanel" aria-labelledby="tab-skills" hidden>
+          <p class="prompt mono">cat skills.cfg</p>
+          <div class="grid grid-2 skills-grid">
+            {skillsCols.map((col) => (
+              <div>
+                {col.map((s) => (
+                  <div class="skill">
+                    <div class="skill-head">
+                      <span>{s.name}</span><span class="amber">{s.percent}%</span>
+                    </div>
+                    <div class="skill-track">
+                      <div class="skill-fill" data-percent={s.percent}></div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- projects/ -->
+        <div class="panel" id="panel-projects" role="tabpanel" aria-labelledby="tab-projects" hidden>
+          <p class="prompt mono">ls -1 projects/ <span class="dim">// {projects.length} items</span></p>
+          <div class="grid grid-3">
+            {projects.map((p) => (
+              <article class="card">
+                <img class="card-img" src={p.image} alt={p.title} loading="lazy" />
+                <div class="card-body">
+                  <h3 class="card-title">{p.title}</h3>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </TerminalWindow>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .about-head {
+    display: flex;
+    gap: 1.75rem;
+    align-items: center;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+  }
+  .about-avatar {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--amber);
+    padding: 4px;
+  }
+  .about-name {
+    font-size: 2rem;
+    margin: 0;
+  }
+  .about-sub {
+    max-width: 65ch;
+    margin: 0.4rem 0 1rem;
+    font-size: 0.9rem;
+  }
+  .about-actions {
+    margin-bottom: 0.9rem;
+  }
+  .about-socials {
+    display: flex;
+    gap: 1rem;
+    font-size: 1.25rem;
+  }
+  .about-socials a {
+    color: var(--dim);
+  }
+  .about-socials a:hover {
+    color: var(--amber);
+  }
+
+  .tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+    margin-bottom: -1px;
+  }
+  .tab {
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    color: var(--dim);
+    background: var(--bg-elev-2);
+    border: 1px solid var(--border);
+    border-bottom: none;
+    border-radius: 6px 6px 0 0;
+    padding: 0.5rem 0.85rem;
+    cursor: pointer;
+    transition: color 0.15s ease, background 0.15s ease;
+  }
+  .tab:hover {
+    color: var(--fg-strong);
+  }
+  .tab.active {
+    color: var(--amber);
+    background: var(--bg-elev);
+    border-bottom: 1px solid var(--bg-elev);
+  }
+  .about-term {
+    border-top-left-radius: 0;
+  }
+
+  .panel {
+    animation: fade 0.2s ease;
+  }
+  @keyframes fade {
+    from {
+      opacity: 0;
+    }
+  }
+  .bio p {
+    margin: 0 0 1rem;
+    max-width: 72ch;
+  }
+
+  .cert-list {
+    list-style: none;
+    margin: 1rem 0 0;
+    padding: 0;
+  }
+  .cert {
+    padding: 0.7rem 0;
+    border-bottom: 1px dashed var(--border);
+  }
+  .cert-main {
+    display: flex;
+    gap: 0.5rem;
+    align-items: baseline;
+  }
+  .cert-mark {
+    flex: none;
+  }
+  .cert-name {
+    color: var(--fg-strong);
+  }
+  .cert-meta {
+    font-size: 0.8rem;
+    margin-top: 0.2rem;
+    padding-left: 1.25rem;
+  }
+
+  .skills-grid {
+    margin-top: 1rem;
+  }
+</style>
+
+<script>
+  // Tab switching + skill-bar fill animation.
+  const tabs = Array.from(document.querySelectorAll<HTMLButtonElement>('.tab'));
+  const panels = Array.from(document.querySelectorAll<HTMLElement>('.panel'));
+
+  function fillSkills() {
+    document.querySelectorAll<HTMLElement>('.skill-fill').forEach((el) => {
+      el.style.width = (el.dataset.percent || '0') + '%';
+    });
+  }
+
+  function activate(id: string) {
+    tabs.forEach((t) => {
+      const on = t.dataset.tab === id;
+      t.classList.toggle('active', on);
+      t.setAttribute('aria-selected', String(on));
+    });
+    panels.forEach((p) => {
+      const on = p.id === `panel-${id}`;
+      p.classList.toggle('active', on);
+      p.hidden = !on;
+    });
+    if (id === 'skills') requestAnimationFrame(fillSkills);
+  }
+
+  tabs.forEach((t) => t.addEventListener('click', () => activate(t.dataset.tab!)));
+
+  // Deep-link support (#experience etc.).
+  const hash = location.hash.replace('#', '');
+  if (hash && tabs.some((t) => t.dataset.tab === hash)) activate(hash);
+</script>

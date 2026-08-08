@@ -1,0 +1,13 @@
+---
+// A terminal-style prompt line: "> <text>▊" with a blinking cursor.
+interface Props {
+  text?: string;
+  cursor?: boolean;
+  as?: string;
+}
+const { text = '', cursor = false, as = 'div' } = Astro.props;
+const Tag = as as any;
+---
+<Tag class="prompt">
+  {text}<slot />{cursor && <span class="cursor" aria-hidden="true"></span>}
+</Tag>

@@ -1,0 +1,41 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import TerminalWindow from '../components/TerminalWindow.astro';
+---
+<BaseLayout title="Jebakumar — Blog">
+  <section class="section">
+    <div class="container narrow">
+      <p class="section-label">blog</p>
+      <h1 class="section-title mono">~/blog<span class="cursor" aria-hidden="true"></span></h1>
+
+      <TerminalWindow path="~/blog">
+        <p class="prompt mono">git status</p>
+        <pre class="build-note mono">On branch main
+Your branch is <span class="amber">under construction</span>.
+
+  new file:   first-post.md   (staged, not yet committed)
+
+nothing to publish here yet — the live blog lives elsewhere.</pre>
+        <div class="ascii-rule"></div>
+        <p>
+          Posts are published at
+          <a href="https://blog.jebakumar.in" target="_blank" rel="noopener">blog.jebakumar.in</a>.
+        </p>
+        <a class="btn" href="https://blog.jebakumar.in" target="_blank" rel="noopener">[ open_blog ↗ ]</a>
+      </TerminalWindow>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .narrow {
+    max-width: 640px;
+  }
+  .build-note {
+    font-size: 0.85rem;
+    line-height: 1.6;
+    color: var(--fg);
+    white-space: pre-wrap;
+    margin: 0.5rem 0;
+  }
+</style>

@@ -1,0 +1,53 @@
+---
+import ThemeToggle from './ThemeToggle.astro';
+
+// External subdomain links are kept exactly as the legacy site (separate hosts).
+// Local pages (/about, /contact) use directory-style URLs.
+const path = Astro.url.pathname;
+const isActive = (href: string) => path === href || path === href + '/';
+
+const links = [
+  { label: 'Blog', href: 'https://blog.jebakumar.in', external: true },
+  { label: 'Lab', href: 'https://lab.jebakumar.in/', external: true },
+  { label: 'Cloud', href: 'https://cloud.jebakumar.in/', external: true },
+  { label: 'About', href: '/about', external: false },
+  { label: 'Contact', href: '/contact', external: false },
+];
+---
+<nav class="nav">
+  <div class="container nav-inner">
+    <a class="nav-brand" href="/">
+      <span class="prompt-char">~/</span>jeba
+    </a>
+
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false" data-nav-toggle>
+      <i class="fas fa-terminal"></i>
+    </button>
+
+    <ul class="nav-links" data-nav-links>
+      {links.map((l) => (
+        <li>
+          <a
+            href={l.href}
+            target={l.external ? '_blank' : undefined}
+            rel={l.external ? 'noopener' : undefined}
+            aria-current={!l.external && isActive(l.href) ? 'page' : undefined}
+          >
+            {l.label}
+          </a>
+        </li>
+      ))}
+      <li><ThemeToggle /></li>
+    </ul>
+  </div>
+</nav>
+
+<script>
+  // Mobile menu toggle (hamburger).
+  const btn = document.querySelector('[data-nav-toggle]');
+  const menu = document.querySelector('[data-nav-links]');
+  btn?.addEventListener('click', () => {
+    const open = menu?.classList.toggle('open');
+    btn.setAttribute('aria-expanded', String(!!open));
+  });
+</script>

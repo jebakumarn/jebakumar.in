@@ -1,0 +1,21 @@
+---
+// A window frame with the classic three-dot titlebar and a path label.
+interface Props {
+  path?: string;
+  class?: string;
+}
+const { path = '~', class: cls } = Astro.props;
+---
+<div class:list={['terminal-window', cls]}>
+  <div class="terminal-titlebar">
+    <span class="terminal-dots">
+      <span class="terminal-dot red"></span>
+      <span class="terminal-dot yellow"></span>
+      <span class="terminal-dot green"></span>
+    </span>
+    <span class="terminal-path">{path}</span>
+  </div>
+  <div class="terminal-body">
+    <slot />
+  </div>
+</div>

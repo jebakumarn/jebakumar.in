@@ -1,0 +1,153 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import TerminalWindow from '../components/TerminalWindow.astro';
+import { profile } from '../data/profile';
+import { experience } from '../data/experience';
+import { projects } from '../data/projects';
+import { totalExperience, formatRange } from '../lib/duration';
+
+const years = totalExperience(experience);
+const current = experience[0];
+const featured = projects.slice(0, 3);
+---
+<BaseLayout>
+  <!-- Hero -->
+  <section class="section hero">
+    <div class="container">
+      <TerminalWindow path="~/jeba — zsh">
+        <p class="prompt mono hero-cmd">whoami</p>
+        <h1 class="hero-name">{profile.name} Govindaswamy</h1>
+        <p class="hero-role mono amber">
+          Software System Design Engineer
+          <span class="cursor" aria-hidden="true"></span>
+        </p>
+        <p class="hero-summary">
+          IT professional with over <strong>{years}</strong> of experience in Ethernet &amp;
+          wireless networking, driver/firmware validation, and test automation — currently
+          {current.title} @ {current.company.split(' ')[0]}.
+        </p>
+        <div class="hero-actions">
+          <a class="btn" href="/about">[ view_work ]</a>
+          <a class="btn btn-green" href="/contact">[ contact ]</a>
+          <a class="btn btn-ghost" href={profile.resume} target="_blank" rel="noopener">
+            [ resume.pdf ]
+          </a>
+        </div>
+        <div class="hero-socials">
+          {profile.socials.map((s) => (
+            <a href={s.href} target="_blank" rel="noopener" aria-label={s.label} title={s.label}>
+              <i class={s.icon}></i>
+            </a>
+          ))}
+        </div>
+      </TerminalWindow>
+    </div>
+  </section>
+
+  <!-- Currently -->
+  <section class="section">
+    <div class="container">
+      <p class="section-label">01_currently</p>
+      <div class="grid grid-2">
+        <TerminalWindow path="~/now">
+          <p class="prompt mono">cat role.txt</p>
+          <h3 class="mono">{current.title}</h3>
+          <p class="dim mono" style="font-size:.85rem">
+            {current.company} · {formatRange(current.start, current.end)}
+          </p>
+          <ul class="tl-bullets" style="margin-top:.75rem">
+            {current.bullets.slice(0, 3).map((b) => <li>{b}</li>)}
+          </ul>
+          <a class="btn btn-ghost" href="/about" style="margin-top:1rem">[ full_history ]</a>
+        </TerminalWindow>
+
+        <TerminalWindow path="~/stack">
+          <p class="prompt mono">ls -1 focus/</p>
+          <ul class="stack-list mono">
+            <li><span class="amber">›</span> Ethernet / NIC validation (10/25/100GbE)</li>
+            <li><span class="amber">›</span> Python test-automation frameworks</li>
+            <li><span class="amber">›</span> Virtualization: ESXi · Hyper-V · KVM</li>
+            <li><span class="amber">›</span> SR-IOV · VMDq · IPU / DPU · P4</li>
+            <li><span class="amber">›</span> Grafana · Docker · Jama · Jira</li>
+            <li><span class="amber">›</span> Wi-Fi 802.11 a/b/g/n/ac/ad</li>
+          </ul>
+        </TerminalWindow>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured work -->
+  <section class="section">
+    <div class="container">
+      <p class="section-label">02_featured_work</p>
+      <h2 class="section-title">Recent projects<span class="cursor" aria-hidden="true"></span></h2>
+      <div class="grid grid-3">
+        {featured.map((p) => (
+          <article class="card">
+            <img class="card-img" src={p.image} alt={p.title} loading="lazy" />
+            <div class="card-body">
+              <h3 class="card-title">{p.title}</h3>
+            </div>
+          </article>
+        ))}
+      </div>
+      <p style="margin-top:1.5rem">
+        <a class="btn btn-ghost" href="/about">[ see_all_projects ]</a>
+      </p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero {
+    padding-top: 3rem;
+  }
+  .hero-cmd {
+    margin: 0 0 1rem;
+    color: var(--green);
+  }
+  .hero-name {
+    font-family: var(--font-mono);
+    font-size: clamp(1.8rem, 6vw, 3rem);
+    margin: 0;
+  }
+  .hero-role {
+    font-size: clamp(1rem, 3vw, 1.4rem);
+    margin: 0.4rem 0 1.25rem;
+  }
+  .hero-summary {
+    max-width: 60ch;
+    color: var(--fg);
+    margin: 0 0 1.75rem;
+  }
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+  }
+  .hero-socials {
+    display: flex;
+    gap: 1.1rem;
+    font-size: 1.35rem;
+  }
+  .hero-socials a {
+    color: var(--dim);
+  }
+  .hero-socials a:hover {
+    color: var(--amber);
+  }
+  .stack-list,
+  .tl-bullets {
+    list-style: none;
+    padding: 0;
+    margin: 0.75rem 0 0;
+  }
+  .stack-list li {
+    padding: 0.25rem 0;
+    font-size: 0.9rem;
+  }
+  .stack-list .amber {
+    margin-right: 0.5rem;
+  }
+</style>
