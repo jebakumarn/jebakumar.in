@@ -21,6 +21,10 @@
   --yellow: #ffbd2e;
   --link: #e8a33d;
   --selection-bg: rgba(232, 163, 61, 0.28);
+  --aurora-1: rgba(63, 185, 80, 0.16);
+  --aurora-2: rgba(232, 163, 61, 0.15);
+  --aurora-3: rgba(94, 142, 255, 0.13);
+  --grid-line: rgba(255, 255, 255, 0.022);
 
   --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', 'Cascadia Code',
     Menlo, Consolas, monospace;
@@ -46,6 +50,10 @@
   --yellow: #b8860b;
   --link: #b26a10;
   --selection-bg: rgba(178, 106, 16, 0.22);
+  --aurora-1: rgba(26, 127, 55, 0.1);
+  --aurora-2: rgba(178, 106, 16, 0.1);
+  --aurora-3: rgba(60, 110, 200, 0.08);
+  --grid-line: rgba(0, 0, 0, 0.03);
 }
 
 /* ── Reset / base ──────────────────────────────────────────────────────── */
@@ -63,7 +71,7 @@ html {
 
 body {
   margin: 0;
-  background-color: var(--bg);
+  background-color: transparent;
   color: var(--fg);
   font-family: var(--font-sans);
   font-size: 16px;
@@ -73,6 +81,51 @@ body {
   flex-direction: column;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+}
+
+/* ── Background: "linux aurora" glow + faint systems grid ─────────────────── */
+/* html paints the base color; these fixed pseudo-elements float behind all
+   content (transparent body lets them show through). */
+body::before {
+  content: '';
+  position: fixed;
+  inset: -25%;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(38% 34% at 18% 22%, var(--aurora-1), transparent 70%),
+    radial-gradient(42% 38% at 85% 16%, var(--aurora-2), transparent 70%),
+    radial-gradient(46% 42% at 72% 82%, var(--aurora-3), transparent 72%),
+    radial-gradient(40% 36% at 26% 88%, var(--aurora-1), transparent 72%);
+  filter: blur(30px) saturate(120%);
+  animation: aurora-drift 26s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image:
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: 44px 44px;
+  -webkit-mask-image: radial-gradient(ellipse 78% 72% at 50% 32%, #000, transparent 92%);
+  mask-image: radial-gradient(ellipse 78% 72% at 50% 32%, #000, transparent 92%);
+}
+
+@keyframes aurora-drift {
+  0% {
+    transform: translate3d(-2%, -1%, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(2%, 3%, 0) scale(1.09);
+  }
+  100% {
+    transform: translate3d(-1%, 1%, 0) scale(1.04);
+  }
 }
 
 ::selection {
@@ -623,6 +676,90 @@ select:focus {
 }
 ::-webkit-scrollbar-thumb:hover {
   background: var(--dim);
+}
+
+/* ── Contact assistant chat bubbles ──────────────────────────────────────── */
+/* Global (not page-scoped) on purpose: chatbot.ts injects these nodes at
+   runtime, so they never receive Astro's scoped-style attribute. */
+.chatbot-messages .message {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  margin-bottom: 14px;
+  max-width: 85%;
+}
+.chatbot-messages .bot-message {
+  align-items: flex-start;
+  margin-right: auto;
+}
+.chatbot-messages .user-message {
+  align-items: flex-end;
+  margin-left: auto;
+}
+.chatbot-messages .message::before {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.02em;
+  opacity: 0.9;
+}
+.chatbot-messages .bot-message::before {
+  content: 'jeba@assistant';
+  color: var(--green);
+}
+.chatbot-messages .user-message::before {
+  content: 'you';
+  color: var(--amber);
+}
+.chatbot-messages .message-content {
+  max-width: 100%;
+  padding: 8px 13px;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+.chatbot-messages .bot-message .message-content {
+  background: var(--bg-elev-2);
+  color: var(--fg);
+  border: 1px solid var(--border);
+  border-top-left-radius: 3px;
+}
+.chatbot-messages .user-message .message-content {
+  background: var(--amber);
+  color: var(--bg);
+  border-top-right-radius: 3px;
+}
+.chatbot-messages .message-content p {
+  margin: 0;
+  white-space: pre-wrap;
+}
+.chatbot-messages .message-content.typing {
+  display: inline-flex;
+  gap: 4px;
+  align-items: center;
+}
+.chatbot-messages .message-content.typing span {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--fg);
+  opacity: 0.5;
+  animation: chat-blink 1.2s infinite both;
+}
+.chatbot-messages .message-content.typing span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.chatbot-messages .message-content.typing span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+@keyframes chat-blink {
+  0%,
+  80%,
+  100% {
+    opacity: 0.2;
+  }
+  40% {
+    opacity: 0.9;
+  }
 }
 
 /* ── Responsive ────────────────────────────────────────────────────────── */
