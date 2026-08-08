@@ -21,8 +21,9 @@ const contactCards = [
         <TerminalWindow path="~/contact/message.txt">
           <p class="prompt mono">./send_message.sh</p>
           <div id="contact-success" class="alert alert-success hidden">
-            ✔ Message queued. Thanks — I'll get back to you soon.
+            ✔ Message sent — thanks! I'll get back to you soon.
           </div>
+          <div id="contact-error" class="alert alert-error hidden"></div>
           <form id="contact-form" novalidate>
             <div class="field">
               <label for="name">name</label>
@@ -40,6 +41,8 @@ const contactCards = [
               <label for="message">message</label>
               <textarea class="textarea" id="message" name="message" placeholder="your message..." required></textarea>
             </div>
+            <!-- Honeypot: hidden from humans; bots that tick it are silently dropped. -->
+            <input type="checkbox" name="botcheck" id="botcheck" class="hidden" tabindex="-1" autocomplete="off" />
             <button class="btn" type="submit">[ send ]</button>
           </form>
         </TerminalWindow>

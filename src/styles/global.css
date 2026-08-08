@@ -21,9 +21,10 @@
   --yellow: #ffbd2e;
   --link: #e8a33d;
   --selection-bg: rgba(232, 163, 61, 0.28);
-  --aurora-1: rgba(63, 185, 80, 0.16);
-  --aurora-2: rgba(232, 163, 61, 0.15);
-  --aurora-3: rgba(94, 142, 255, 0.13);
+  --aurora-1: rgba(63, 185, 80, 0.26);
+  --aurora-2: rgba(232, 163, 61, 0.24);
+  --aurora-3: rgba(94, 142, 255, 0.22);
+  --aurora-4: rgba(196, 92, 232, 0.18);
   --grid-line: rgba(255, 255, 255, 0.022);
 
   --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', 'Cascadia Code',
@@ -50,9 +51,10 @@
   --yellow: #b8860b;
   --link: #b26a10;
   --selection-bg: rgba(178, 106, 16, 0.22);
-  --aurora-1: rgba(26, 127, 55, 0.1);
-  --aurora-2: rgba(178, 106, 16, 0.1);
-  --aurora-3: rgba(60, 110, 200, 0.08);
+  --aurora-1: rgba(26, 127, 55, 0.16);
+  --aurora-2: rgba(178, 106, 16, 0.16);
+  --aurora-3: rgba(60, 110, 200, 0.14);
+  --aurora-4: rgba(150, 60, 190, 0.12);
   --grid-line: rgba(0, 0, 0, 0.03);
 }
 
@@ -89,17 +91,20 @@ body {
 body::before {
   content: '';
   position: fixed;
-  inset: -25%;
+  inset: -30%;
   z-index: -1;
   pointer-events: none;
   background:
-    radial-gradient(38% 34% at 18% 22%, var(--aurora-1), transparent 70%),
-    radial-gradient(42% 38% at 85% 16%, var(--aurora-2), transparent 70%),
-    radial-gradient(46% 42% at 72% 82%, var(--aurora-3), transparent 72%),
-    radial-gradient(40% 36% at 26% 88%, var(--aurora-1), transparent 72%);
-  filter: blur(30px) saturate(120%);
-  animation: aurora-drift 26s ease-in-out infinite alternate;
-  will-change: transform;
+    radial-gradient(36% 32% at 16% 20%, var(--aurora-1), transparent 68%),
+    radial-gradient(40% 36% at 86% 14%, var(--aurora-2), transparent 68%),
+    radial-gradient(44% 40% at 74% 80%, var(--aurora-3), transparent 70%),
+    radial-gradient(38% 34% at 24% 88%, var(--aurora-4), transparent 70%),
+    radial-gradient(30% 28% at 52% 46%, var(--aurora-1), transparent 72%);
+  filter: blur(28px) saturate(140%);
+  animation:
+    aurora-drift 18s ease-in-out infinite alternate,
+    aurora-shimmer 13s ease-in-out infinite alternate;
+  will-change: transform, filter;
 }
 
 body::after {
@@ -118,13 +123,22 @@ body::after {
 
 @keyframes aurora-drift {
   0% {
-    transform: translate3d(-2%, -1%, 0) scale(1);
+    transform: translate3d(-5%, -3%, 0) scale(1.02) rotate(-1.5deg);
   }
   50% {
-    transform: translate3d(2%, 3%, 0) scale(1.09);
+    transform: translate3d(5%, 4%, 0) scale(1.16) rotate(2deg);
   }
   100% {
-    transform: translate3d(-1%, 1%, 0) scale(1.04);
+    transform: translate3d(-2%, 3%, 0) scale(1.07) rotate(-0.5deg);
+  }
+}
+
+@keyframes aurora-shimmer {
+  0% {
+    filter: blur(26px) saturate(135%) hue-rotate(-18deg);
+  }
+  100% {
+    filter: blur(34px) saturate(170%) hue-rotate(24deg);
   }
 }
 
