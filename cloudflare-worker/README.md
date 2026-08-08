@@ -35,7 +35,7 @@ Copy that URL.
 
 ## Point the website at it
 
-Open [`../js/chatbot.js`](../js/chatbot.js) and set the endpoint near the top:
+Open [`../src/scripts/chatbot.ts`](../src/scripts/chatbot.ts) and set the endpoint near the top:
 
 ```js
 const CHATBOT_ENDPOINT = "https://jebakumar-chatbot.<your-subdomain>.workers.dev";

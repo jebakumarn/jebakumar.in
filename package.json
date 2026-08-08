@@ -1,17 +1,17 @@
 {
-  "name": "jk-web",
-  "version": "1.0.0",
-  "main": "index.js",
+  "name": "jebakumar-in",
+  "version": "2.0.0",
+  "private": true,
+  "description": "Personal portfolio for jebakumar.in — Astro + Terminal/Systems design",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
   "dependencies": {
-    "@popperjs/core": "^2.11.8",
-    "bootstrap": "^5.3.5",
-    "jquery": "^3.7.1"
+    "astro": "^4.16.0"
   }
 }
