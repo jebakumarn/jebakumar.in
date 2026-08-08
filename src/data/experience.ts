@@ -1,3 +1,9 @@
+/**
+ * A bullet is either a plain string, or an object with nested `children` for
+ * sub-bullets (and sub-sub-bullets, recursively) — mirrors the résumé's nesting.
+ */
+export type Bullet = string | { text: string; children?: Bullet[] };
+
 export interface Experience {
   title: string;
   company: string;
@@ -6,7 +12,7 @@ export interface Experience {
   mapUrl?: string;
   start: string; // ISO "YYYY-MM" or "YYYY-MM-DD"; "YYYY" if only a year is shown
   end: string | null; // null = present/current
-  bullets: string[];
+  bullets: Bullet[];
 }
 
 export const experience: Experience[] = [
@@ -41,15 +47,23 @@ export const experience: Experience[] = [
       "Conducted manual performance testing for ESXi and Hyper-V environments focusing on SR-IOV, VMDq/VMMQ, Direct PCIe Assignment, and VxLAN features. Automated ESXi performance testing using Python (sys, os, netmiko, ssh, paramiko, pyVim, pyVmomi), PowerCLI, iperf, netperf, and Bash scripting.",
       "Led comparative benchmark testing and generated performance reports for Intel E800 Series, Broadcom P2100G, AMD Pensando, NVIDIA Mellanox CX5, CX6, and CX7 adapters.",
       "Participated in comparative benchmark performance testing and collected the perf report for Intel E800, E2100 series Network adapter, Nvidia Mellanox CX6, CX7 Adapters",
-      "Researched and tested Intel IPU Adapter, NVIDIA Bluefield Adapter features including:",
-      "LAN Throughput and Latency Performance for Host mode and IPU Accelerator Mode",
-      "Configuring maximum supported P4 rules and validated it via Table Drivern interface for following features:",
-      "Simple Exact Match",
-      "Large Exact Match",
-      "Flow Counter",
-      "Validated Intel IPU Lookaside Crypto Engine Performance, Covering::",
-      "Crypto, Compression & Decompression, Service Chain combinations",
-      "DMA Performance across data paths (Host < -- > Accelerator)",
+      {
+        text: "Researched and tested Intel IPU Adapter, NVIDIA Bluefield Adapter features including:",
+        children: [
+          "LAN Throughput and Latency Performance for Host mode and IPU Accelerator Mode",
+          {
+            text: "Configuring maximum supported P4 rules and validated it via Table Drivern interface for following features:",
+            children: ["Simple Exact Match", "Large Exact Match", "Flow Counter"],
+          },
+        ],
+      },
+      {
+        text: "Validated Intel IPU Lookaside Crypto Engine Performance, Covering:",
+        children: [
+          "Crypto, Compression & Decompression, Service Chain combinations",
+          "DMA Performance across data paths (Host <--> Accelerator)",
+        ],
+      },
     ],
   },
   {

@@ -544,11 +544,17 @@ select:focus {
   margin: 0;
   color: var(--fg-strong);
 }
+.tl-org {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  color: var(--fg);
+  margin: 0.25rem 0 0.1rem;
+}
 .tl-meta {
   font-family: var(--font-mono);
   font-size: 0.82rem;
   color: var(--dim);
-  margin: 0.2rem 0 0.6rem;
+  margin: 0 0 0.6rem;
 }
 .tl-bullets {
   margin: 0;
@@ -556,6 +562,14 @@ select:focus {
 }
 .tl-bullets li {
   margin-bottom: 0.35rem;
+}
+/* Nested sub-bullets: distinct marker + tighter top spacing under the parent. */
+.tl-bullets-sub {
+  margin: 0.35rem 0 0.15rem;
+  list-style-type: circle;
+}
+.tl-bullets-sub .tl-bullets-sub {
+  list-style-type: square;
 }
 
 /* ── Navbar ────────────────────────────────────────────────────────────── */

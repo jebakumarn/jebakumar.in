@@ -1,0 +1,22 @@
+---
+// Recursive bullet list — renders nested sub-bullets (and deeper) via Astro.self.
+import type { Bullet } from '../data/experience';
+
+interface Props {
+  items: Bullet[];
+  nested?: boolean;
+}
+const { items, nested = false } = Astro.props;
+---
+<ul class:list={['tl-bullets', { 'tl-bullets-sub': nested }]}>
+  {items.map((b) => {
+    const text = typeof b === 'string' ? b : b.text;
+    const children = typeof b === 'string' ? undefined : b.children;
+    return (
+      <li>
+        {text}
+        {children && children.length > 0 && <Astro.self items={children} nested />}
+      </li>
+    );
+  })}
+</ul>
