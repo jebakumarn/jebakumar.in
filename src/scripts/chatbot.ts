@@ -11,7 +11,7 @@
 // ── CONFIG ───────────────────────────────────────────────────────────────────
 // Paste your deployed Worker URL here (see cloudflare-worker/README.md).
 // Leave blank to use the offline keyword fallback only.
-const CHATBOT_ENDPOINT = '';
+const CHATBOT_ENDPOINT = 'https://chatbot.jebakumar.in';
 // ─────────────────────────────────────────────────────────────────────────────
 
 interface Turn {
