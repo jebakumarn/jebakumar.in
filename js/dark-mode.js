@@ -3,22 +3,21 @@ document.addEventListener('DOMContentLoaded', () => {
     const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
     const currentTheme = localStorage.getItem('theme');
   
-    // Check for saved theme preference or use system preference
+    // Apply a saved preference, or a dark system preference. With no saved
+    // preference we keep the page's dark-first default (set in the HTML).
     if (currentTheme) {
       document.documentElement.setAttribute('data-theme', currentTheme);
       document.body.setAttribute('data-theme', currentTheme);
-      
-      if (currentTheme === 'dark') {
-        toggleSwitch.checked = true;
-      }
-    } else {
-      // Check system preference
-      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.documentElement.setAttribute('data-theme', 'dark');
-        document.body.setAttribute('data-theme', 'dark');
-        toggleSwitch.checked = true;
-        localStorage.setItem('theme', 'dark');
-      }
+    } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      document.body.setAttribute('data-theme', 'dark');
+      localStorage.setItem('theme', 'dark');
+    }
+
+    // Sync the toggle to whichever theme is actually active
+    const activeTheme = document.body.getAttribute('data-theme') || 'dark';
+    if (toggleSwitch) {
+      toggleSwitch.checked = (activeTheme === 'dark');
     }
   
     // Function to switch theme

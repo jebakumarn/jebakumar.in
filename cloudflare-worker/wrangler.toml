@@ -1,0 +1,11 @@
+# Cloudflare Worker config for the jebakumar.in AI assistant.
+# Deploy with:  npx wrangler deploy   (from this folder)
+
+name = "jebakumar-chatbot"
+main = "worker.js"
+compatibility_date = "2026-08-08"
+
+# Workers AI binding — this is what makes env.AI.run(...) work.
+# No API key needed; it runs open models on Cloudflare's free tier.
+[ai]
+binding = "AI"

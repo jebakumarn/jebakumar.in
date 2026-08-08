@@ -1,33 +1,69 @@
-/* Base Styles */
+/* Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+
+/* Base Styles — Taalas-inspired, dark-first design system */
 :root {
-    --primary-color: #4e73df;
-    --secondary-color: #858796;
-    --background-color: #f8f9fc;
-    --text-color: #333;
-    --card-bg: #fff;
-    --border-color: #e3e6f0;
-    --footer-bg: #f8f9fa;
-    --nav-bg: #fff;
+    /* Dark is the default palette (dark-first) */
+    --primary-color: #e8a33d;      /* restrained warm amber accent */
+    --secondary-color: #8a8a8a;    /* muted gray */
+    --background-color: #0a0a0a;   /* near-black canvas */
+    --text-color: #ededed;         /* off-white */
+    --card-bg: #0f0f0f;
+    --border-color: #262626;       /* hairline */
+    --footer-bg: #0a0a0a;
+    --nav-bg: rgba(10, 10, 10, 0.8);
     --transition: all 0.3s ease;
+
+    --font-display: 'Space Grotesk', 'Segoe UI', Tahoma, sans-serif;
+    --font-mono: 'Space Mono', ui-monospace, SFMono-Regular, monospace;
   }
-  
+
   [data-theme="dark"] {
-    --primary-color: #4e73df;
-    --secondary-color: #b7b9cc;
-    --background-color: #1e2235;
-    --text-color: #f8f9fc;
-    --card-bg: #2a2f45;
-    --border-color: #393e53;
-    --footer-bg: #1a1c2d;
-    --nav-bg: #1a1c2d;
+    --primary-color: #e8a33d;
+    --secondary-color: #8a8a8a;
+    --background-color: #0a0a0a;
+    --text-color: #ededed;
+    --card-bg: #0f0f0f;
+    --border-color: #262626;
+    --footer-bg: #0a0a0a;
+    --nav-bg: rgba(10, 10, 10, 0.8);
   }
-  
+
+  [data-theme="light"] {
+    --primary-color: #b5761a;
+    --secondary-color: #6a6a6a;
+    --background-color: #f4f4f2;
+    --text-color: #141414;
+    --card-bg: #ffffff;
+    --border-color: #dcdcd8;
+    --footer-bg: #eeeeec;
+    --nav-bg: rgba(244, 244, 242, 0.85);
+  }
+
   body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: var(--font-display);
     line-height: 1.6;
     color: var(--text-color);
     background-color: var(--background-color);
     transition: var(--transition);
+    letter-spacing: 0.01em;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+
+  /* Monospace eyebrow / label utility (Taalas-style technical labels) */
+  .eyebrow,
+  .mono,
+  .navbar-nav .nav-link,
+  .filter-btn {
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.8rem;
   }
   
   /* Navigation */
@@ -67,7 +103,7 @@
     min-height: 1vh;
     display: flex;
     align-items: center;
-    background: linear-gradient(135deg, rgba(78, 115, 223, 0.05) 0%, rgba(78, 115, 223, 0.1) 100%);
+    background-color: var(--background-color);
     padding: 1rem 0;
   }
   
@@ -130,12 +166,10 @@
     background-color: var(--card-bg);
     border: 1px solid var(--border-color);
     transition: var(--transition);
-    transform: translateY(0);
   }
-  
+
   .card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    border-color: var(--primary-color);
   }
   
   .card-title {
@@ -207,7 +241,7 @@
       transition: transform 0.3s;
   }
   .theme-switch input:checked + .slider {
-      background-color: #4caf50;
+      background-color: var(--primary-color);
   }
   .theme-switch input:checked + .slider:before {
       transform: translateX(25px);
@@ -315,9 +349,14 @@
     width: 100%;
     height: auto;
     border-radius: 100%;
-    background-color: white;
-    box-shadow: 30px 30px 30px rgba(0, 0, 0, 0.1);
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
     transition: all 0.3s ease;
+    filter: grayscale(100%);
+  }
+
+  .profile-image:hover {
+    filter: grayscale(0%);
   }
 
   @media (max-width: 320px) {
@@ -489,16 +528,20 @@
   .portfolio-content {
     position: relative;
     overflow: hidden;
-    border-radius: 10px;
+    border: 1px solid var(--border-color);
     margin-bottom: 20px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   }
-  
+
   .portfolio-content img {
     width: 100%;
     height: 250px;
     object-fit: cover;
     transition: all 0.5s ease;
+    filter: grayscale(100%);
+  }
+
+  .portfolio-content:hover img {
+    filter: grayscale(0%);
   }
   
   .portfolio-overlay {
@@ -582,15 +625,13 @@
 
   /* Professional Skills Style */
   .card {
-    border: 0;
-    border-radius: 20px;
-    /*border-radius: 0.1875rem;*/
+    border: 1px solid var(--border-color);
+    border-radius: 0;
     display: inline-block;
     position: relative;
     overflow: hidden;
     width: 100%;
-    margin-bottom: 20px;
-    box-shadow: 0px 5px 25px 0px rgba(0, 0, 0, 0.5s); }
+    margin-bottom: 20px; }
     .card .card-body {
       min-height: 150px; }
     .card[data-background-color="orange"] {
@@ -1011,12 +1052,194 @@ footer {
     .hero-content h1 {
         font-size: 2.5rem;
     }
-    
+
     .hero-content p {
         font-size: 1rem;
     }
-    
+
     .slideshow-controls {
         bottom: 20px;
     }
+}
+
+/* ============================================================
+   Taalas-inspired overrides (P1–P3)
+   Flat, mono-labelled, hairline-bordered, no gloss.
+   Kept at end of file for precedence over legacy rules above.
+   ============================================================ */
+
+/* Navigation: transparent-over-canvas with hairline + blur */
+.navbar#main-nav {
+  background-color: var(--nav-bg) !important;
+  border-bottom: 1px solid var(--border-color);
+  box-shadow: none;
+  backdrop-filter: saturate(140%) blur(10px);
+  -webkit-backdrop-filter: saturate(140%) blur(10px);
+}
+
+/* Buttons: ghost / flat, mono labels, square, no gradient or shadow */
+.btn {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 0.8rem;
+  border-radius: 0;
+  box-shadow: none !important;
+  padding: 0.7rem 1.4rem;
+  transition: var(--transition);
+}
+
+.btn-primary,
+.btn-sm.btn-primary {
+  background-color: transparent;
+  border: 1px solid var(--primary-color);
+  color: var(--primary-color);
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-sm.btn-primary:hover {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  color: #0a0a0a;
+}
+
+.btn-outline-light {
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  color: #fff;
+}
+
+.btn-outline-light:hover {
+  background-color: #fff;
+  color: #0a0a0a;
+}
+
+/* Cards: no rounding anywhere, hairline only */
+.card,
+.card-body {
+  border-radius: 0;
+}
+
+/* Section accent bar: shorter, sharper */
+.section-title::after {
+  width: 40px;
+  height: 2px;
+}
+
+/* Book pages: drop the heavy glow for a flat panel */
+.page {
+  box-shadow: none;
+  border: 1px solid var(--border-color);
+  border-radius: 0;
+}
+
+/* ============================================================
+   Theme polish & fixes (P3.1)
+   Fixes light/dark inconsistencies and adds finishing touches.
+   Kept last so it overrides everything above.
+   ============================================================ */
+
+/* Tell the browser (and native widgets: scrollbars, form controls,
+   autofill) which scheme is active, and paint the root so there is no
+   white flash before <body> styles apply or on scroll overscroll. */
+:root            { color-scheme: dark; }
+[data-theme="dark"]  { color-scheme: dark; }
+[data-theme="light"] { color-scheme: light; }
+
+html {
+  background-color: var(--background-color);
+  transition: background-color 0.3s ease;
+}
+
+/* Themed text selection */
+::selection {
+  background-color: var(--primary-color);
+  color: var(--background-color);
+}
+
+/* Themed scrollbars */
+* {
+  scrollbar-color: var(--border-color) transparent;
+  scrollbar-width: thin;
+}
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background-color: var(--border-color);
+  border-radius: 0;
+}
+::-webkit-scrollbar-thumb:hover { background-color: var(--primary-color); }
+
+/* Form controls: Bootstrap defaults to a white field, which looks broken
+   in dark mode (contact form, chat input, lab login). Bind them to the
+   theme so they work in both palettes. */
+.form-control,
+.form-select {
+  background-color: var(--card-bg);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  border-radius: 0;
+  transition: border-color 0.2s ease, background-color 0.3s ease, color 0.3s ease;
+}
+
+.form-control:focus,
+.form-select:focus {
+  background-color: var(--card-bg);
+  color: var(--text-color);
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 0.15rem rgba(232, 163, 61, 0.25);
+}
+
+.form-control::placeholder { color: var(--secondary-color); opacity: 1; }
+.form-label { color: var(--text-color); }
+
+/* Links inside content follow the accent, not Bootstrap's default blue */
+.card a:not(.btn),
+.page-content a:not(.btn) { color: var(--primary-color); }
+.card a:not(.btn):hover,
+.page-content a:not(.btn):hover { color: var(--text-color); }
+
+/* Themed heading band (replaces the old hardcoded blue bands in about.html) */
+.section-heading-band {
+  background-color: var(--primary-color);
+  color: var(--background-color);
+  padding: 0.35rem 1rem;
+  margin-bottom: 1rem;
+  transition: var(--transition);
+}
+.section-heading-band h1,
+.section-heading-band h2,
+.section-heading-band h3 { color: inherit; margin-bottom: 0; }
+
+/* In light mode, .btn-outline-light would be a white button on a light
+   page — make it readable if it ever appears off the dark hero. */
+[data-theme="light"] .btn-outline-light {
+  border-color: var(--text-color);
+  color: var(--text-color);
+}
+[data-theme="light"] .btn-outline-light:hover {
+  background-color: var(--text-color);
+  color: var(--background-color);
+}
+
+/* Legacy template progress bars: use theme colours instead of gray #888 */
+.progress-container .progress {
+  background: var(--border-color);
+}
+.progress-container .progress .progress-bar { background-color: var(--primary-color); }
+.progress-container .progress-value,
+.progress-container .progress-badge { color: var(--secondary-color); }
+
+/* Theme toggle: show a sun / moon glyph on the knob (checked = dark).
+   Done in CSS so no per-page HTML edits are needed. */
+.theme-switch .slider:before {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  line-height: 1;
+  content: "\2600"; /* ☀ sun — shown in light mode */
+}
+.theme-switch input:checked + .slider:before {
+  content: "\263D"; /* ☽ moon — shown in dark mode */
 }
