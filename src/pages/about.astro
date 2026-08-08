@@ -7,9 +7,9 @@ import { certifications } from '../data/certifications';
 import { education } from '../data/education';
 import { skills } from '../data/skills';
 import { projects } from '../data/projects';
-import { totalExperience, formatRange, formatTenure } from '../lib/duration';
+import { totalExperienceDetailed, formatRangeFull, formatTenureFull } from '../lib/duration';
 
-const years = totalExperience(experience);
+const years = totalExperienceDetailed(experience);
 const bio = profile.bio.map((p) => p.replaceAll('{{EXPERIENCE}}', years));
 
 const tabs = [
@@ -85,8 +85,8 @@ const skillsCols = [skills.slice(0, mid), skills.slice(mid)];
                   ) : (
                     job.company
                   )}
-                  {' · '}{formatRange(job.start, job.end)}
-                  {' · '}<span class="amber">{formatTenure(job.start, job.end)}</span>
+                  {' · '}{formatRangeFull(job.start, job.end)}
+                  {' · '}<span class="amber">{formatTenureFull(job.start, job.end)}</span>
                   {job.location && <><br /><span class="dim">{job.location}</span></>}
                 </p>
                 <ul class="tl-bullets">
