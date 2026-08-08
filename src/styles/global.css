@@ -26,6 +26,10 @@
   --aurora-3: rgba(94, 142, 255, 0.22);
   --aurora-4: rgba(196, 92, 232, 0.18);
   --grid-line: rgba(255, 255, 255, 0.022);
+  /* Background photo, tuned dark so it sinks into the night palette. */
+  --bg-photo-tint: rgba(10, 10, 14, 0.52);
+  --bg-photo-filter: saturate(1.12) contrast(1.02);
+  --bg-photo-opacity: 0.7;
 
   --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', 'Cascadia Code',
     Menlo, Consolas, monospace;
@@ -56,6 +60,10 @@
   --aurora-3: rgba(60, 110, 200, 0.14);
   --aurora-4: rgba(150, 60, 190, 0.12);
   --grid-line: rgba(0, 0, 0, 0.03);
+  /* Same photo, lifted toward the paper palette so it reads light. */
+  --bg-photo-tint: rgba(244, 241, 234, 0.66);
+  --bg-photo-filter: saturate(0.82) brightness(1.12);
+  --bg-photo-opacity: 0.6;
 }
 
 /* ── Reset / base ──────────────────────────────────────────────────────── */
@@ -85,14 +93,32 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-/* ── Background: "linux aurora" glow + faint systems grid ─────────────────── */
-/* html paints the base color; these fixed pseudo-elements float behind all
-   content (transparent body lets them show through). */
+/* ── Background: photo + "linux aurora" glow + faint systems grid ─────────── */
+/* Layer order (back → front): html base color · .site-bg photo (z -3) ·
+   aurora (z -2) · systems grid (z -1) · content. The photo is tinted with the
+   theme color so it goes dark in dark mode and light in light mode; the aurora
+   floats over it and dominates while the photo stays visible. */
+.site-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -3;
+  pointer-events: none;
+  background-image:
+    linear-gradient(var(--bg-photo-tint), var(--bg-photo-tint)),
+    url('/assets/images/aurora-photo.jpg');
+  background-size: cover, cover;
+  background-position: center, center;
+  background-repeat: no-repeat, no-repeat;
+  opacity: var(--bg-photo-opacity);
+  filter: var(--bg-photo-filter);
+  transition: filter 0.3s ease;
+}
+
 body::before {
   content: '';
   position: fixed;
   inset: -30%;
-  z-index: -1;
+  z-index: -2;
   pointer-events: none;
   background:
     radial-gradient(36% 32% at 16% 20%, var(--aurora-1), transparent 68%),
